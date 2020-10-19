@@ -102,7 +102,7 @@ are changed, this key will update accordingly and re-render the chart again.
 In the following example, a parent component houses both column chart and pie chart and defines a `$model` for each one. 
 The parent component renders the charts as follows
 
-```php
+```blade
 <livewire:livewire-column-chart
     key="{{ $columnChartModel->reactiveKey() }}"
     :column-chart-model="$columnChartModel"
