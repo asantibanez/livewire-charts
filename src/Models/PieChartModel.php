@@ -96,4 +96,8 @@ class PieChartModel
         $this->data = collect(data_get($array, 'data', []));
     }
 
+    public function reactiveKey()
+    {
+        return md5(json_encode($this->toArray()));
+    }
 }

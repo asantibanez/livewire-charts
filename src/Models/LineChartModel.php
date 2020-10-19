@@ -107,4 +107,8 @@ class LineChartModel
         $this->markers = collect(data_get($array, 'markers', []));
     }
 
+    public function reactiveKey()
+    {
+        return md5(json_encode($this->toArray()));
+    }
 }

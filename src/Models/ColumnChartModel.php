@@ -3,6 +3,8 @@
 
 namespace Asantibanez\LivewireCharts\Models;
 
+use Ramsey\Uuid\Uuid;
+
 /**
  * Class ColumnChartModel
  * @package Asantibanez\LivewireCharts\Models
@@ -94,6 +96,11 @@ class ColumnChartModel
         $this->opacity = data_get($array, 'opacity', 0.5);
 
         $this->data = collect(data_get($array, 'data', []));
+    }
+
+    public function reactiveKey()
+    {
+        return md5(json_encode($this->toArray()));
     }
 
 }

@@ -2,7 +2,7 @@
 
 Neat Livewire Charts for your Laravel projects.
 
-### Preview
+## Preview
 
 ![preview](https://github.com/asantibanez/livewire-charts/raw/master/preview.gif)
 
@@ -14,7 +14,7 @@ You can install the package via composer:
 composer require asantibanez/livewire-charts
 ```
 
-### Requirements
+## Requirements
 
 This package requires the following packages/libraries to work:
 - `Laravel Livewire v2` (https://laravel-livewire.com/) 
@@ -23,7 +23,7 @@ This package requires the following packages/libraries to work:
 
 Please follow each package/library instructions on how to set them properly in your project.
 
-NOTE: At the moment, `Apex Charts` is only supported for drawing charts.  
+> Note: At the moment, `Apex Charts` is only supported for drawing charts.  
 
 ## Usage
 
@@ -48,17 +48,79 @@ $columnChartModel =
     ;
 ``` 
 
-With `$columnChartModel` at hand, we pass it to our `LivewireColumnChart` component in our Blade template.
+> Note: Chart model methods are chainable 💪 
+
+With `$columnChartModel` at hand, we pass it to our `LivewireColumnChart` component in our Blade template. 
 
 ```blade
 <livewire:livewire-column-chart
     :column-chart-model="$columnChartModel"
 />
-```
+``` 
 
 And that's it! You have a beautiful rendered chart in seconds. 👌
 
 ![column chart example](https://github.com/asantibanez/livewire-charts/raw/master/column-chart-example.png)
+
+> Note: You can use these charts inside other Livewire components too. Just render them in your Blade template and you
+are good to go. 👍
+
+## Enabling Interactions
+
+To enable click events, you must use the `with[XXX]ClickEvent($eventName)` method present in every model class and 
+define a custom `$eventName` that will be fired with the corresponding data when a column/marker/slice is clicked.
+
+```php
+$columnChartModel = 
+    (new ColumnChartModel())
+        ->setTitle('Expenses by Type')
+        ->withOnColumnClickEventName('onColumnClick')
+    ;
+``` 
+ 
+ Here we define an `onColumnClick` event that will be fired when a column is clicked in our chart. 
+ 
+ We can listen to the `onClickEvent` registering a listener in any other Livewire component.
+ 
+ ```php
+ protected $listeners = [
+     'onColumnClick' => 'handleOnColumnClick',
+ ];
+ ``` 
+
+## Charts "Reactivity"
+
+You can use livewire-charts components as nested components in you Livewire components. Once rendered, charts will
+not automatically react to changes in the `$model` passed in. This is just how Livewire works. 
+
+However, to enable "reactivity" when data passed in changes, you can define a special `$key` 
+to your components so they are fully re-rendered each time the chart data changes. 
+
+Each model class comes with a `reactiveKey()` method that returns a string based on its data. If any of the properties
+are changed, this key will update accordingly and re-render the chart again.
+
+In the following example, a parent component houses both column chart and pie chart and defines a `$model` for each one. 
+The parent component renders the charts as follows
+
+```php
+<livewire:livewire-column-chart
+    key="{{ $columnChartModel->reactiveKey() }}"
+    :column-chart-model="$columnChartModel"
+/>
+
+<livewire:livewire-pie-chart
+    key="{{ $pieChartModel->reactiveKey() }}"
+    :pie-chart-model="$pieChartModel"
+/>
+``` 
+ 
+ When the parent component changes their respective models, charts will automatically re-render itself.
+ 
+ ![reactive charts example](https://github.com/asantibanez/livewire-charts/raw/master/reactive-charts-example.gif)
+ 
+  
+
+## Charts API
 
 ### Testing
 
