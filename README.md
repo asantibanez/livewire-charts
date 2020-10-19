@@ -88,7 +88,7 @@ $columnChartModel =
  ];
  ``` 
 
-## Charts "Reactivity"
+## "Reactive" Charts
 
 You can use livewire-charts components as nested components in you Livewire components. Once rendered, charts will
 not automatically react to changes in the `$model` passed in. This is just how Livewire works. 
@@ -119,6 +119,9 @@ The parent component renders the charts as follows
  ![reactive charts example](https://github.com/asantibanez/livewire-charts/raw/master/reactive-charts-example.gif)
  
 ## Charts API
+
+For each chart, a specific model class needs to be used. Here, it is detailed the api available
+for each type of chart.
 
 #### LivewireLineChart
 
