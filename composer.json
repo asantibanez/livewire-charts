@@ -1,0 +1,55 @@
+{
+    "name": "asantibanez/livewire-charts",
+    "description": "Livewire Charts",
+    "keywords": [
+        "asantibanez",
+        "livewire-charts"
+    ],
+    "homepage": "https://github.com/asantibanez/livewire-charts",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Andrés Santibáñez",
+            "email": "santibanez.andres@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.2|^7.3|^7.4",
+        "illuminate/support": "^7.0|^8.0",
+        "livewire/livewire": "^2.3"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0|^5.0",
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Asantibanez\\LivewireCharts\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Asantibanez\\LivewireCharts\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Asantibanez\\LivewireCharts\\LivewireChartsServiceProvider"
+            ],
+            "aliases": {
+                "LivewireCharts": "Asantibanez\\LivewireCharts\\LivewireChartsFacade"
+            }
+        }
+    }
+}
