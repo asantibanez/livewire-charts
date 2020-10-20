@@ -2,6 +2,7 @@
 
 namespace Asantibanez\LivewireCharts;
 
+use Asantibanez\LivewireCharts\Charts\LivewireAreaChart;
 use Asantibanez\LivewireCharts\Charts\LivewireColumnChart;
 use Asantibanez\LivewireCharts\Charts\LivewireLineChart;
 use Asantibanez\LivewireCharts\Charts\LivewirePieChart;
@@ -26,6 +27,7 @@ class LivewireChartsServiceProvider extends ServiceProvider
         Livewire::component('livewire-line-chart', LivewireLineChart::class);
         Livewire::component('livewire-column-chart', LivewireColumnChart::class);
         Livewire::component('livewire-pie-chart', LivewirePieChart::class);
+        Livewire::component('livewire-area-chart', LivewireAreaChart::class);
     }
 
     /**
