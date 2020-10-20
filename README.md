@@ -31,11 +31,13 @@ Livewire Charts supports out of the box the following types of charts
 - Line Chart (`LivewireLineChart` component)
 - Pie Chart (`LivewirePieChart` component)
 - Column Chart (`LivewireColumnChart` component)
+- Area Chart (`LivewireAreaChart` component)
 
 Each one comes with its own "model" class that allows you to define the chart's data and render behavior. 
 - `LivewireLineChart` uses `LineChartModel` to set up data points, markers, events and other ui customizations. 
 - `LivewirePieChart` uses `PieChartModel` to set up data slices, events and other ui customizations. 
 - `LivewireColumnChart` uses `ColumnChartModel` to set up data columns, events and other ui customizations.
+- `LivewireAreaChart` uses `AreaChartModel` to set up data points, events and other ui customizations.
 
 For example, to render a column chart, we can create an instance of `ColumnChartModel` and add some data to it
 ```php
@@ -152,6 +154,17 @@ for each type of chart.
 | setOpacity(int $opacity) | Sets slices' opacity |
 | addSlice(string $title, double $value, string $color, array $extras = []) | Adds a slice to the chart with the specified color. `$extras` is forwarded on click event |
 | withOnSliceClickEvent(string $eventName) | Event Name that will be fired when a column of the chart is clicked |
+
+#### LivewireAreaChart
+
+| Method | Description |
+|--------|-------------|
+| setTitle(string $title) | Sets chart title |
+| setAnimated(boolean $animated) | Enables/disables animation |
+| addPoint(string $title, double $value, array $extras = []) | Adds a point to the area chart. `$extras` is forwarded on click event |
+| withOnPointClickEvent(string $eventName) | Event Name that will be fired when a point of the chart is clicked |
+| setXAxisVisible(boolean $visible) | Shows/hides xAxis labels |
+| setYAxisVisible(boolean $visible) | Shows/hides yAxis labels |
 
 ## Testing
 
