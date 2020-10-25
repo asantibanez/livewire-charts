@@ -50,9 +50,7 @@
                             enabled: false
                         },
 
-                        stroke: {
-                            curve: component.get('lineChartModel.stroke.curve') || 'straight',
-                        },
+                        stroke: component.get('lineChartModel.stroke') || {},
 
                         title: {
                             text: component.get('lineChartModel.title'),
@@ -60,8 +58,11 @@
                         },
 
                         xaxis: {
+                            ...component.get('lineChartModel.xAxis') || {},
                             categories: component.get('lineChartModel.data').map(item => item.title),
                         },
+
+                        yaxis: component.get('lineChartModel.yAxis') || {},
 
                         annotations: {
                             points: component.get('lineChartModel.markers').map(item => {
