@@ -9,12 +9,15 @@ namespace Asantibanez\LivewireCharts\Models;
  */
 class BaseChartModel
 {
-    use HasAxisConfiguration;
-    use HasStrokeConfiguration;
+    use HasAxis;
+    use HasStroke;
+    use HasLegend;
 
     public function __construct()
     {
-        $this->setupAxis();
+        $this->initAxis();
+        $this->initStroke();
+        $this->initLegend();
     }
 
     public function reactiveKey()
@@ -24,16 +27,17 @@ class BaseChartModel
 
     public function toArray()
     {
-        return [
-            'xAxis' => $this->xAxis,
-            'yAxis' => $this->yAxis,
-            'stroke' => $this->stroke,
-        ];
+        return array_merge(
+            $this->axisToArray(),
+            $this->strokeToArray(),
+            $this->legendToArray()
+        );
     }
 
     public function fromArray($array)
     {
-        $this->setupAxis($array);
-        $this->setupStroke($array);
+        $this->axisFromArray($array);
+        $this->strokeFromArray($array);
+        $this->legendFromArray($array);
     }
 }

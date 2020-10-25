@@ -3,13 +3,11 @@
 
 namespace Asantibanez\LivewireCharts\Models;
 
-use Ramsey\Uuid\Uuid;
-
 /**
  * Class ColumnChartModel
  * @package Asantibanez\LivewireCharts\Models
  */
-class ColumnChartModel
+class ColumnChartModel extends BaseChartModel
 {
     public $title;
 
@@ -23,6 +21,8 @@ class ColumnChartModel
 
     public function __construct()
     {
+        parent::__construct();
+
         $this->title = '';
 
         $this->animated = false;
@@ -76,17 +76,19 @@ class ColumnChartModel
 
     public function toArray()
     {
-        return [
+        return array_merge(parent::toArray(), [
             'title' => $this->title,
             'animated' => $this->animated,
             'onColumnClickEventName' => $this->onColumnClickEventName,
             'opacity' => $this->opacity,
             'data' => $this->data->toArray(),
-        ];
+        ]);
     }
 
     public function fromArray($array)
     {
+        parent::fromArray($array);
+
         $this->title = data_get($array, 'title', '');
 
         $this->animated = data_get($array, 'animated', false);
@@ -97,10 +99,4 @@ class ColumnChartModel
 
         $this->data = collect(data_get($array, 'data', []));
     }
-
-    public function reactiveKey()
-    {
-        return md5(json_encode($this->toArray()));
-    }
-
 }

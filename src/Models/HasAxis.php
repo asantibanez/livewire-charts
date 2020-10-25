@@ -4,16 +4,32 @@
 namespace Asantibanez\LivewireCharts\Models;
 
 
-trait HasAxisConfiguration
+trait HasAxis
 {
     private $xAxis;
 
     private $yAxis;
 
-    public function __construct()
+    public function initAxis()
     {
         $this->xAxis = $this->defaultXAxis();
         $this->yAxis = $this->defaultYAxis();
+    }
+
+    private function defaultXAxis()
+    {
+        return [
+            'labels' => [
+                'show' => true,
+            ],
+        ];
+    }
+
+    private function defaultYAxis()
+    {
+        return [
+            'show' => true,
+        ];
     }
 
     public function setXAxisVisible($visible)
@@ -30,26 +46,18 @@ trait HasAxisConfiguration
         return $this;
     }
 
-    protected function setupAxis($array = [])
+    protected function axisFromArray($array)
     {
         $this->xAxis = data_get($array, 'xAxis', $this->defaultXAxis());
 
         $this->yAxis = data_get($array, 'yAxis', $this->defaultYAxis());
     }
 
-    private function defaultXAxis()
+    protected function axisToArray()
     {
         return [
-            'labels' => [
-                'show' => true,
-            ],
-        ];
-    }
-
-    private function defaultYAxis()
-    {
-        return [
-            'show' => true,
+            'xAxis' => $this->xAxis,
+            'yAxis' => $this->yAxis,
         ];
     }
 }

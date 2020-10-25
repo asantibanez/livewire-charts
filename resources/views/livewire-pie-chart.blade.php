@@ -2,7 +2,6 @@
     class="w-full h-full"
     x-data="{ ...pieChart() }"
     x-init="drawChart(@this)"
-    x-on:draw-column-chart.window="drawChart(@this)"
 >
     <div wire:ignore x-ref="container"></div>
 
@@ -12,10 +11,6 @@
                 chart: null,
 
                 drawChart(component) {
-                    this.renderApex(component)
-                },
-
-                renderApex(component) {
                     if (this.chart) {
                         this.chart.destroy()
                     }
@@ -73,6 +68,8 @@
                                 }
                             }
                         ],
+
+                        legend: component.get('pieChartModel.legend') || {},
                     };
 
                     this.chart = new ApexCharts(this.$refs.container, options);

@@ -4,13 +4,20 @@
 namespace Asantibanez\LivewireCharts\Models;
 
 
-trait HasStrokeConfiguration
+trait HasStroke
 {
     private $stroke;
 
-    public function __construct()
+    public function initStroke()
     {
         $this->stroke = $this->defaultStroke();
+    }
+
+    private function defaultStroke()
+    {
+        return [
+            'curve' => 'straight',
+        ];
     }
 
     public function setSmoothCurve()
@@ -27,15 +34,15 @@ trait HasStrokeConfiguration
         return $this;
     }
 
-    protected function setupStroke($array = [])
-    {
-        $this->stroke = data_get($array, 'stroke', $this->defaultStroke());
-    }
-
-    private function defaultStroke()
+    protected function strokeToArray()
     {
         return [
-            'curve' => 'straight',
+            'stroke' => $this->stroke,
         ];
+    }
+
+    protected function strokeFromArray($array)
+    {
+        $this->stroke = data_get($array, 'stroke', $this->defaultStroke());
     }
 }

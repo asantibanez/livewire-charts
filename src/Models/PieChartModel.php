@@ -7,7 +7,7 @@ namespace Asantibanez\LivewireCharts\Models;
  * Class PieChartModel
  * @package Asantibanez\LivewireCharts\Models
  */
-class PieChartModel
+class PieChartModel extends BaseChartModel
 {
     public $title;
 
@@ -21,6 +21,8 @@ class PieChartModel
 
     public function __construct()
     {
+        parent::__construct();
+
         $this->title = '';
 
         $this->animated = false;
@@ -74,17 +76,19 @@ class PieChartModel
 
     public function toArray()
     {
-        return [
+        return array_merge(parent::toArray(), [
             'title' => $this->title,
             'animated' => $this->animated,
             'onSliceClickEventName' => $this->onSliceClickEventName,
             'opacity' => $this->opacity,
             'data' => $this->data->toArray(),
-        ];
+        ]);
     }
 
     public function fromArray($array)
     {
+        parent::fromArray($array);
+
         $this->title = data_get($array, 'title', '');
 
         $this->animated = data_get($array, 'animated', false);
@@ -94,10 +98,5 @@ class PieChartModel
         $this->opacity = data_get($array, 'opacity', 0.75);
 
         $this->data = collect(data_get($array, 'data', []));
-    }
-
-    public function reactiveKey()
-    {
-        return md5(json_encode($this->toArray()));
     }
 }

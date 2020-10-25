@@ -58,6 +58,8 @@
                             },
                         },
 
+                        legend: component.get('columnChartModel.legend') || {},
+
                         plotOptions: {
                             bar: {
                                 horizontal: false,
