@@ -29,6 +29,65 @@ trait HasLegend
         return $this;
     }
 
+    public function setLegendPosition($position)
+    {
+        data_set($this->legend, 'position', $position);
+
+        return $this;
+    }
+
+    public function setLegendHorizontalAlign($horizontalAlign)
+    {
+        data_set($this->legend, 'horizontalAlign', $horizontalAlign);
+
+        return $this;
+    }
+
+    public function withoutLegend()
+    {
+        return $this->setLegendVisibility(false);
+    }
+
+    public function withLegend()
+    {
+        return $this->setLegendVisibility(true);
+    }
+
+    public function legendPositionTop()
+    {
+        return $this->setLegendPosition('top');
+    }
+
+    public function legendPositionLeft()
+    {
+        return $this->setLegendPosition('left');
+    }
+
+    public function legendPositionRight()
+    {
+        return $this->setLegendPosition('right');
+    }
+
+    public function legendPositionBottom()
+    {
+        return $this->setLegendPosition('bottom');
+    }
+
+    public function legendHorizontallyAlignedLeft()
+    {
+        return $this->setLegendHorizontalAlign('left');
+    }
+
+    public function legendHorizontallyAlignedCenter()
+    {
+        return $this->setLegendHorizontalAlign('center');
+    }
+
+    public function legendHorizontallyAlignedRight()
+    {
+        return $this->setLegendHorizontalAlign('right');
+    }
+
     protected function legendToArray()
     {
         return [
