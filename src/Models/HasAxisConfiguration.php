@@ -10,6 +10,12 @@ trait HasAxisConfiguration
 
     private $yAxis;
 
+    public function __construct()
+    {
+        $this->xAxis = $this->defaultXAxis();
+        $this->yAxis = $this->defaultYAxis();
+    }
+
     public function setXAxisVisible($visible)
     {
         data_set($this->xAxis, 'labels.show', $visible);

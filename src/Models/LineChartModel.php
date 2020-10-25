@@ -7,7 +7,7 @@ namespace Asantibanez\LivewireCharts\Models;
  * Class LineChartModel
  * @package Asantibanez\LivewireCharts\Models
  */
-class LineChartModel
+class LineChartModel extends BaseChartModel
 {
     public $title;
 
@@ -21,6 +21,8 @@ class LineChartModel
 
     public function __construct()
     {
+        parent::__construct();
+
         $this->title = '';
 
         $this->animated = false;
@@ -85,17 +87,19 @@ class LineChartModel
 
     public function toArray()
     {
-        return [
+        return array_merge(parent::toArray(), [
             'title' => $this->title,
             'animated' => $this->animated,
             'onPointClickEventName' => $this->onPointClickEventName,
             'data' => $this->data->toArray(),
             'markers' => $this->markers->toArray(),
-        ];
+        ]);
     }
 
     public function fromArray($array)
     {
+        parent::fromArray($array);
+
         $this->title = data_get($array, 'title', '');
 
         $this->animated = data_get($array, 'animated', false);

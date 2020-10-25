@@ -20,6 +20,7 @@
                             name: component.get('lineChartModel.title'),
                             data: component.get('lineChartModel.data').map(item => item.value),
                         }],
+
                         chart: {
                             type: 'line',
                             height: '100%',
@@ -44,19 +45,24 @@
                                 }
                             }
                         },
+
                         dataLabels: {
                             enabled: false
                         },
+
                         stroke: {
-                            curve: 'straight'
+                            curve: component.get('lineChartModel.stroke.curve') || 'straight',
                         },
+
                         title: {
                             text: component.get('lineChartModel.title'),
                             align: 'center'
                         },
+
                         xaxis: {
                             categories: component.get('lineChartModel.data').map(item => item.title),
                         },
+
                         annotations: {
                             points: component.get('lineChartModel.markers').map(item => {
                                     return {

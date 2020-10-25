@@ -10,6 +10,7 @@ namespace Asantibanez\LivewireCharts\Models;
 class BaseChartModel
 {
     use HasAxisConfiguration;
+    use HasStrokeConfiguration;
 
     public function __construct()
     {
@@ -26,11 +27,13 @@ class BaseChartModel
         return [
             'xAxis' => $this->xAxis,
             'yAxis' => $this->yAxis,
+            'stroke' => $this->stroke,
         ];
     }
 
     public function fromArray($array)
     {
         $this->setupAxis($array);
+        $this->setupStroke($array);
     }
 }
