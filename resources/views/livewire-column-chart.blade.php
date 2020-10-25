@@ -1,5 +1,5 @@
 <div
-    class="w-full h-full relative"
+    class="w-full h-full"
     x-data="{ ...columnChart() }"
     x-init="drawChart(@this)"
     x-on:draw-column-chart.window="drawChart(@this)"
