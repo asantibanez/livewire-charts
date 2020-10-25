@@ -4,3 +4,4 @@ composer.lock
 docs
 vendor
 coverage
+.DS_STORE
