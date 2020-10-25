@@ -6,6 +6,10 @@ Neat Livewire Charts for your Laravel projects.
 
 ![preview](https://github.com/asantibanez/livewire-charts/raw/master/preview.gif)
 
+## Demo
+
+https://github.com/asantibanez/livewire-charts-demo
+
 ## Installation
 
 You can install the package via composer:
