@@ -2,7 +2,6 @@
     class="w-full h-full"
     x-data="{ ...lineChart() }"
     x-init="drawChart(@this)"
-    x-on:draw-column-chart.window="drawChart(@this)"
 >
     <div wire:ignore x-ref="container"></div>
 
@@ -12,10 +11,6 @@
                 chart: null,
 
                 drawChart(component) {
-                    this.renderApex(component)
-                },
-
-                renderApex(component) {
                     if (this.chart) {
                         this.chart.destroy()
                     }
