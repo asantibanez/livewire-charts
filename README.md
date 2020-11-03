@@ -127,22 +127,33 @@ The parent component renders the charts as follows
 For each chart, a specific model class needs to be used. Here, it is detailed the api available
 for each type of chart.
 
-#### LivewireLineChart
+#### All
 
 | Method | Description |
 |--------|-------------|
 | setTitle(string $title) | Sets chart title |
 | setAnimated(boolean $animated) | Enables/disables animation |
-| addPoint(string $title, double $value, array $extras = []) | Adds a point to the line chart. `$extras` is forwarded on click event |
-| addMarker(string $title, double $value) | Adds a marker point to the line chart. Markers are used to emphasize particular points in the chart |
+| setDataLabelsEnabled(boolean $enabled) | Enables/disables data labels |
+| withDataLabels() | Enables data labels |
+| withoutDataLabels() | Disables data labels |
+| withLegends() | Shows legends |
+| withoutLegends() | Hides legends |
+
+#### LivewireLineChart
+
+| Method | Description |
+|--------|-------------|
+| multiLine() | Adds multiline support for line chart |
+| singleLine() | Adds single support for line chart |
+| addPoint(string $title, double $value, array $extras = []) | Adds a point to a single line chart. `$extras` is forwarded on click event |
+| addSeriesPoint(string $seriesName, string $title, double $value, array $extras = []) | Adds a point to series to a multi line chart. `$extras` is forwarded on click event |
+| addMarker(string $title, double $value) | Adds a marker point to the line chart. Markers are used to emphasize particular points in the chart (singleLine only) |
 | withOnPointClickEvent(string $eventName) | Event Name that will be fired when a point/marker of the chart is clicked |
 
 #### LivewireColumnChart
 
 | Method | Description |
 |--------|-------------|
-| setTitle(string $title) | Sets chart title |
-| setAnimated(boolean $animated) | Enables/disables animation |
 | setOpacity(int $opacity) | Sets columns' opacity |
 | addColumn(string $title, double $value, string $color, array $extras = []) | Adds a column to the chart with the specified color. `$extras` is forwarded on click event |
 | onColumnClickEventName(string $eventName) | Event Name that will be fired when a column of the chart is clicked |
@@ -151,8 +162,6 @@ for each type of chart.
 
 | Method | Description |
 |--------|-------------|
-| setTitle(string $title) | Sets chart title |
-| setAnimated(boolean $animated) | Enables/disables animation |
 | setOpacity(int $opacity) | Sets slices' opacity |
 | addSlice(string $title, double $value, string $color, array $extras = []) | Adds a slice to the chart with the specified color. `$extras` is forwarded on click event |
 | withOnSliceClickEvent(string $eventName) | Event Name that will be fired when a column of the chart is clicked |
@@ -161,8 +170,6 @@ for each type of chart.
 
 | Method | Description |
 |--------|-------------|
-| setTitle(string $title) | Sets chart title |
-| setAnimated(boolean $animated) | Enables/disables animation |
 | addPoint(string $title, double $value, array $extras = []) | Adds a point to the area chart. `$extras` is forwarded on click event |
 | withOnPointClickEvent(string $eventName) | Event Name that will be fired when a point of the chart is clicked |
 | setXAxisVisible(boolean $visible) | Shows/hides xAxis labels |

@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.0 - 2020-11-03
+
+- Added Multi Line Chart 
+- Added Data Labels configuration for all charts
+- Refactored title and animation to traits
+
 ## 1.2.0 - 2020-10-25
 
 - Fixed column chart growing infinitely 
