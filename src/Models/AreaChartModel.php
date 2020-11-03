@@ -9,8 +9,6 @@ namespace Asantibanez\LivewireCharts\Models;
  */
 class AreaChartModel extends BaseChartModel
 {
-    public $title;
-
     public $color;
 
     public $data;
@@ -21,20 +19,11 @@ class AreaChartModel extends BaseChartModel
     {
         parent::__construct();
 
-        $this->title = '';
-
         $this->color = '#90cdf4';
 
         $this->onPointClickEventName = null;
 
         $this->data = collect();
-    }
-
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
     }
 
     public function setColor($color)
@@ -65,7 +54,6 @@ class AreaChartModel extends BaseChartModel
     public function toArray()
     {
         return array_merge(parent::toArray(), [
-            'title' => $this->title,
             'color' => $this->color,
             'onPointClickEventName' => $this->onPointClickEventName,
             'data' => $this->data->toArray(),
@@ -75,8 +63,6 @@ class AreaChartModel extends BaseChartModel
     public function fromArray($array)
     {
         parent::fromArray($array);
-
-        $this->title = data_get($array, 'title', '');
 
         $this->color = data_get($array, 'color', '#90cdf4');
 

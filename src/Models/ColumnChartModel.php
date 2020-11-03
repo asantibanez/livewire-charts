@@ -9,8 +9,6 @@ namespace Asantibanez\LivewireCharts\Models;
  */
 class ColumnChartModel extends BaseChartModel
 {
-    public $title;
-
     public $opacity;
 
     public $onColumnClickEventName;
@@ -21,20 +19,11 @@ class ColumnChartModel extends BaseChartModel
     {
         parent::__construct();
 
-        $this->title = '';
-
         $this->onColumnClickEventName = null;
 
         $this->opacity = 0.5;
 
         $this->data = collect();
-    }
-
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
     }
 
     public function setOpacity($opacity)
@@ -66,7 +55,6 @@ class ColumnChartModel extends BaseChartModel
     public function toArray()
     {
         return array_merge(parent::toArray(), [
-            'title' => $this->title,
             'onColumnClickEventName' => $this->onColumnClickEventName,
             'opacity' => $this->opacity,
             'data' => $this->data->toArray(),
@@ -76,8 +64,6 @@ class ColumnChartModel extends BaseChartModel
     public function fromArray($array)
     {
         parent::fromArray($array);
-
-        $this->title = data_get($array, 'title', '');
 
         $this->onColumnClickEventName = data_get($array, 'onColumnClickEventName', null);
 

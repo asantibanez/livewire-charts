@@ -9,6 +9,7 @@ namespace Asantibanez\LivewireCharts\Models;
  */
 class BaseChartModel
 {
+    use HasTitle;
     use HasAnimation;
     use HasAxis;
     use HasStroke;
@@ -16,6 +17,7 @@ class BaseChartModel
 
     public function __construct()
     {
+        $this->initTitle();
         $this->initAnimation();
         $this->initAxis();
         $this->initStroke();
@@ -30,6 +32,7 @@ class BaseChartModel
     public function toArray()
     {
         return array_merge(
+            $this->titleToArray(),
             $this->animationToArray(),
             $this->axisToArray(),
             $this->strokeToArray(),
@@ -39,6 +42,7 @@ class BaseChartModel
 
     public function fromArray($array)
     {
+        $this->titleFromArray($array);
         $this->animationFromArray($array);
         $this->axisFromArray($array);
         $this->strokeFromArray($array);

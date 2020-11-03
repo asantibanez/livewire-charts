@@ -8,13 +8,10 @@ use Illuminate\Support\Collection;
 /**
  * Class LineChartModel
  * @package Asantibanez\LivewireCharts\Models
- * @property string $title
  * @property boolean $isMultiLine
  */
 class LineChartModel extends BaseChartModel
 {
-    public $title;
-
     public $isMultiLine;
 
     public $data;
@@ -26,8 +23,6 @@ class LineChartModel extends BaseChartModel
     public function __construct()
     {
         parent::__construct();
-
-        $this->title = '';
 
         $this->isMultiLine = false;
 
@@ -52,13 +47,6 @@ class LineChartModel extends BaseChartModel
         $this->isMultiLine = false;
 
         $this->data = collect();
-
-        return $this;
-    }
-
-    public function setTitle($title)
-    {
-        $this->title = $title;
 
         return $this;
     }
@@ -119,7 +107,6 @@ class LineChartModel extends BaseChartModel
     public function toArray()
     {
         return array_merge(parent::toArray(), [
-            'title' => $this->title,
             'isMultiLine' => $this->isMultiLine,
             'onPointClickEventName' => $this->onPointClickEventName,
             'data' => $this->data->toArray(),
@@ -130,8 +117,6 @@ class LineChartModel extends BaseChartModel
     public function fromArray($array)
     {
         parent::fromArray($array);
-
-        $this->title = data_get($array, 'title', '');
 
         $this->isMultiLine = data_get($array, 'isMultiLine', false);
 

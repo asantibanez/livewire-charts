@@ -9,8 +9,6 @@ namespace Asantibanez\LivewireCharts\Models;
  */
 class PieChartModel extends BaseChartModel
 {
-    public $title;
-
     public $onSliceClickEventName;
 
     public $opacity;
@@ -21,20 +19,11 @@ class PieChartModel extends BaseChartModel
     {
         parent::__construct();
 
-        $this->title = '';
-
         $this->onSliceClickEventName = null;
 
         $this->opacity = 0.75;
 
         $this->data = collect();
-    }
-
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
     }
 
     public function setOpacity($opacity)
@@ -66,7 +55,6 @@ class PieChartModel extends BaseChartModel
     public function toArray()
     {
         return array_merge(parent::toArray(), [
-            'title' => $this->title,
             'onSliceClickEventName' => $this->onSliceClickEventName,
             'opacity' => $this->opacity,
             'data' => $this->data->toArray(),
@@ -76,8 +64,6 @@ class PieChartModel extends BaseChartModel
     public function fromArray($array)
     {
         parent::fromArray($array);
-
-        $this->title = data_get($array, 'title', '');
 
         $this->onSliceClickEventName = data_get($array, 'onSliceClickEventName', null);
 
