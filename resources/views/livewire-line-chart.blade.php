@@ -15,11 +15,37 @@
                         this.chart.destroy()
                     }
 
+                    const title = component.get('lineChartModel.title');
+                    const animated = component.get('lineChartModel.animated') || false;
+                    const isMultiLine = component.get('lineChartModel.isMultiLine')
+                    const data = component.get('lineChartModel.data');
+                    const onPointClickEventName = component.get('lineChartModel.onPointClickEventName');
+
+                    let series = []
+                    let categories = []
+
+                    if (isMultiLine) {
+                        series = Object.keys(data).map(key => {
+                            return {
+                                name: key,
+                                data: data[key].map(item => item.value),
+                            }
+                        })
+
+                        categories = []
+                    }
+
+                    if (!isMultiLine) {
+                        series = [{
+                            name: title,
+                            data: data.map(item => item.value),
+                        }]
+
+                        categories = data.map(item => item.title)
+                    }
+
                     const options = {
-                        series: [{
-                            name: component.get('lineChartModel.title'),
-                            data: component.get('lineChartModel.data').map(item => item.value),
-                        }],
+                        series: series,
 
                         chart: {
                             type: 'line',
@@ -31,35 +57,41 @@
                                 show: false
                             },
                             animations: {
-                                enabled: component.get('lineChartModel.animated') || false,
+                                enabled: animated,
                             },
                             events: {
-                                markerClick: function(event, chartContext, { dataPointIndex }) {
-                                    const onPointClickEventName = component.get('lineChartModel.onPointClickEventName')
+                                markerClick: function(event, chartContext, { seriesIndex, dataPointIndex }) {
                                     if (!onPointClickEventName) {
+                                       return
+                                    }
+
+                                    if (isMultiLine) {
+                                        const seriesName = Object.keys(data)[Object.keys(data).findIndex((el, index) => index === seriesIndex)]
+                                        const point = data[seriesName][dataPointIndex]
+                                        component.call('onPointClick', point)
                                         return
                                     }
 
-                                    const point = component.get('lineChartModel.data')[dataPointIndex]
+                                    const point = data[dataPointIndex]
                                     component.call('onPointClick', point)
                                 }
                             }
                         },
 
                         dataLabels: {
-                            enabled: false
+                            enabled: false,
                         },
 
                         stroke: component.get('lineChartModel.stroke') || {},
 
                         title: {
-                            text: component.get('lineChartModel.title'),
+                            text: title,
                             align: 'center'
                         },
 
                         xaxis: {
                             ...component.get('lineChartModel.xAxis') || {},
-                            categories: component.get('lineChartModel.data').map(item => item.title),
+                            categories: categories,
                         },
 
                         yaxis: component.get('lineChartModel.yAxis') || {},

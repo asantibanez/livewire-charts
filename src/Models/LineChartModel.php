@@ -3,15 +3,19 @@
 
 namespace Asantibanez\LivewireCharts\Models;
 
+use Illuminate\Support\Collection;
+
 /**
  * Class LineChartModel
  * @package Asantibanez\LivewireCharts\Models
+ * @property string $title
+ * @property boolean $isMultiLine
  */
 class LineChartModel extends BaseChartModel
 {
     public $title;
 
-    public $animated;
+    public $isMultiLine;
 
     public $data;
 
@@ -25,7 +29,7 @@ class LineChartModel extends BaseChartModel
 
         $this->title = '';
 
-        $this->animated = false;
+        $this->isMultiLine = false;
 
         $this->onPointClickEventName = null;
 
@@ -34,16 +38,27 @@ class LineChartModel extends BaseChartModel
         $this->markers = collect();
     }
 
-    public function setTitle($title)
+    public function multiLine()
     {
-        $this->title = $title;
+        $this->isMultiLine = true;
+
+        $this->data = collect();
 
         return $this;
     }
 
-    public function setAnimated($animated)
+    public function singleLine()
     {
-        $this->animated = $animated;
+        $this->isMultiLine = false;
+
+        $this->data = collect();
+
+        return $this;
+    }
+
+    public function setTitle($title)
+    {
+        $this->title = $title;
 
         return $this;
     }
@@ -55,6 +70,22 @@ class LineChartModel extends BaseChartModel
             'value' => $value,
             'extras' => $extras,
         ]);
+
+        return $this;
+    }
+
+    public function addSeriesPoint($seriesName, $title, $value, $extras = [])
+    {
+        $series = $this->data->get($seriesName, collect());
+
+        $series->push([
+            'seriesName' => $seriesName,
+            'title' => $title,
+            'value' => $value,
+            'extras' => $extras,
+        ]);
+
+        $this->data->put($seriesName, $series);
 
         return $this;
     }
@@ -89,7 +120,7 @@ class LineChartModel extends BaseChartModel
     {
         return array_merge(parent::toArray(), [
             'title' => $this->title,
-            'animated' => $this->animated,
+            'isMultiLine' => $this->isMultiLine,
             'onPointClickEventName' => $this->onPointClickEventName,
             'data' => $this->data->toArray(),
             'markers' => $this->markers->toArray(),
@@ -102,7 +133,7 @@ class LineChartModel extends BaseChartModel
 
         $this->title = data_get($array, 'title', '');
 
-        $this->animated = data_get($array, 'animated', false);
+        $this->isMultiLine = data_get($array, 'isMultiLine', false);
 
         $this->onPointClickEventName = data_get($array, 'onPointClickEventName', null);
 
