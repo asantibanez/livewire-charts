@@ -25,7 +25,7 @@ This package requires the following packages/libraries to work:
 
 Please follow each package/library instructions on how to set them properly in your project.
 
-> Note: At the moment, `Apex Charts` is only supported for drawing charts.  
+>Note: At the moment, `Apex Charts` is only supported for drawing charts.  
 
 ## Usage
 
@@ -52,7 +52,7 @@ $columnChartModel =
     ;
 ``` 
 
-> Note: Chart model methods are chainable 💪 
+>Note: Chart model methods are chainable 💪 
 
 With `$columnChartModel` at hand, we pass it to our `LivewireColumnChart` component in our Blade template. 
 
@@ -66,8 +66,8 @@ And that's it! You have a beautiful rendered chart in seconds. 👌
 
 ![column chart example](https://github.com/asantibanez/livewire-charts/raw/master/column-chart-example.png)
 
-> Note: You can use these charts inside other Livewire components too. Just render them in your Blade template and you
-are good to go. 👍
+>Note: You can use these charts inside other Livewire components too. Just render them in your Blade template and you
+are good to go. 👍 
 
 ## Enabling Interactions
 
@@ -167,6 +167,19 @@ for each type of chart.
 | withOnPointClickEvent(string $eventName) | Event Name that will be fired when a point of the chart is clicked |
 | setXAxisVisible(boolean $visible) | Shows/hides xAxis labels |
 | setYAxisVisible(boolean $visible) | Shows/hides yAxis labels |
+
+## Troubleshooting
+
+Chart components must be placed inside a container with fixed height. This is because the chart will use all the given
+vertical space. A fixed height is needed to render properly.
+
+ ```blade
+<div style="height: 32rem;">
+    <livewire:livewire-column-chart .../>
+</div>
+ ``` 
+
+>Note: if a fixed height is not given, the chart will grow vertically infinitely. That's not what we want, right?
 
 ## Testing
 
