@@ -1,12 +1,12 @@
 <div
     class="w-full h-full"
-    x-data="{ ...lineChart() }"
+    x-data="{ ...multiLineChart() }"
     x-init="drawChart(@this)"
 >
     <div wire:ignore x-ref="container"></div>
 
     <script>
-        function lineChart() {
+        function multiLineChart() {
             return {
                 chart: null,
 
@@ -21,12 +21,14 @@
                     const data = component.get('lineChartModel.data');
                     const onPointClickEventName = component.get('lineChartModel.onPointClickEventName');
 
-                    const series = [{
-                        name: title,
-                        data: data.map(item => item.value),
-                    }]
+                    const series = Object.keys(data).map(key => {
+                        return {
+                            name: key,
+                            data: data[key].map(item => item.value),
+                        }
+                    })
 
-                    const categories = data.map(item => item.title)
+                    const categories = []
 
                     const options = {
                         series: series,
@@ -44,12 +46,13 @@
                                 enabled: animated,
                             },
                             events: {
-                                markerClick: function(event, chartContext, { dataPointIndex }) {
+                                markerClick: function(event, chartContext, { seriesIndex, dataPointIndex }) {
                                     if (!onPointClickEventName) {
                                         return
                                     }
 
-                                    const point = data[dataPointIndex]
+                                    const seriesName = Object.keys(data)[Object.keys(data).findIndex((el, index) => index === seriesIndex)]
+                                    const point = data[seriesName][dataPointIndex]
                                     component.call('onPointClick', point)
                                 }
                             }

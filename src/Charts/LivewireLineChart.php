@@ -31,6 +31,10 @@ class LivewireLineChart extends Component
 
     public function render()
     {
+        if ($this->lineChartModel['isMultiLine']) {
+            return view('livewire-charts::livewire-multi-line-chart');
+        }
+
         return view('livewire-charts::livewire-line-chart');
     }
 }
