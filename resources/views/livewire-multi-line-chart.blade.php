@@ -73,30 +73,6 @@
                         },
 
                         yaxis: component.get('lineChartModel.yAxis') || {},
-
-                        annotations: {
-                            points: component.get('lineChartModel.markers').map(item => {
-                                    return {
-                                        x: item.title,
-                                        y: item.value,
-                                        marker: {
-                                            size: 6,
-                                            fillColor: '#fff',
-                                            strokeColor: item.strokeColor,
-                                            radius: 2,
-                                        },
-                                        label: {
-                                            offsetY: 0,
-                                            style: {
-                                                color: item.textColor,
-                                                background: item.textBackgroundColor,
-                                            },
-                                            text: item.text || '',
-                                        }
-                                    }
-                                }
-                            )
-                        },
                     };
 
                     this.chart = new ApexCharts(this.$refs.container, options);
