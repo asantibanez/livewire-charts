@@ -1,6 +1,4 @@
-# Livewire Charts
-
-Neat Livewire Charts for your Laravel projects.
+![Livewire Charts](https://banners.beyondco.de/Livewire%20Charts.png?theme=light&packageName=asantibanez%2Flivewire-charts&pattern=graphPaper&style=style_1&description=Neat+Livewire+Charts+for+your+Laravel+projects&md=1&fontSize=100px&images=chart-square-bar)
 
 ## Preview
 
