@@ -15,46 +15,48 @@
                         this.chart.destroy()
                     }
 
+                    const title = component.get('pieChartModel.title');
+                    const animated = component.get('pieChartModel.animated') || false
+                    const dataLabels = component.get('pieChartModel.dataLabels') || {}
+                    const onSliceClickEventName = component.get('pieChartModel.onSliceClickEventName')
+                    const data = component.get('pieChartModel.data')
+
                     const options = {
-                        series: component.get('pieChartModel.data').map(item => item.value),
+                        series: data.map(item => item.value),
 
                         chart: {
                             height: '100%',
                             type: 'pie',
 
                             animations: {
-                                enabled: component.get('pieChartModel.animated') || false,
+                                enabled: animated,
                             },
 
                             events: {
                                 dataPointSelection: function(event, chartContext, config) {
-                                    const onSliceClickEventName = component.get('pieChartModel.onSliceClickEventName')
-
                                     if (!onSliceClickEventName) {
                                         return
                                     }
 
                                     const { dataPointIndex } = config
-                                    const slice = component.get('pieChartModel.data')[dataPointIndex]
+                                    const slice = data[dataPointIndex]
                                     component.call('onSliceClick', slice)
                                 },
                             }
                         },
 
-                        labels: component.get('pieChartModel.data').map(item => item.title),
+                        labels: data.map(item => item.title),
 
-                        dataLabels: {
-                            enabled: false,
-                        },
+                        dataLabels: dataLabels,
 
-                        colors: component.get('pieChartModel.data').map(item => item.color),
+                        colors: data.map(item => item.color),
 
                         fill: {
                             opacity: component.get('pieChartModel.opacity'),
                         },
 
                         title: {
-                            text: component.get('pieChartModel.title'),
+                            text: title,
                             align: 'center',
                         },
 

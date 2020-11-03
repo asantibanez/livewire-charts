@@ -16,10 +16,16 @@
                         this.chart.destroy()
                     }
 
+                    const title = component.get('areaChartModel.title');
+                    const animated = component.get('areaChartModel.animated') || false;
+                    const dataLabels = component.get('areaChartModel.dataLabels') || {};
+                    const onPointClickEventName = component.get('areaChartModel.onPointClickEventName')
+                    const data = component.get('areaChartModel.data');
+
                     var options = {
                         series: [{
-                            name: component.get('areaChartModel.title'),
-                            data: component.get('areaChartModel.data').map(item => item.value)
+                            name: title,
+                            data: data.map(item => item.value)
                         }],
                         chart: {
                             type: 'area',
@@ -30,25 +36,22 @@
                             toolbar: { show: false },
 
                             animations: {
-                                enabled: component.get('areaChartModel.animated') || false,
+                                enabled: animated,
                             },
 
                             events: {
                                 markerClick: function(event, chartContext, { dataPointIndex }) {
-                                    const onPointClickEventName = component.get('areaChartModel.onPointClickEventName')
                                     if (!onPointClickEventName) {
                                         return
                                     }
 
-                                    const point = component.get('areaChartModel.data')[dataPointIndex]
+                                    const point = data[dataPointIndex]
                                     component.call('onPointClick', point)
                                 }
                             }
                         },
 
-                        dataLabels: {
-                            enabled: false
-                        },
+                        dataLabels: dataLabels,
 
                         colors: [component.get('areaChartModel.color') || '#2E93fA'],
 
@@ -57,11 +60,11 @@
                         },
 
                         title: {
-                            text: component.get('areaChartModel.title'),
+                            text: title,
                             align: 'center'
                         },
 
-                        labels: component.get('areaChartModel.data').map(item => item.title),
+                        labels: data.map(item => item.title),
 
                         xaxis: component.get('areaChartModel.xAxis') || {},
 

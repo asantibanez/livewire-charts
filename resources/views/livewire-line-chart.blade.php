@@ -17,7 +17,7 @@
 
                     const title = component.get('lineChartModel.title');
                     const animated = component.get('lineChartModel.animated') || false;
-                    const isMultiLine = component.get('lineChartModel.isMultiLine')
+                    const dataLabels = component.get('lineChartModel.dataLabels') || {};
                     const data = component.get('lineChartModel.data');
                     const onPointClickEventName = component.get('lineChartModel.onPointClickEventName');
 
@@ -55,9 +55,7 @@
                             }
                         },
 
-                        dataLabels: {
-                            enabled: false,
-                        },
+                        dataLabels: dataLabels,
 
                         stroke: component.get('lineChartModel.stroke') || {},
 

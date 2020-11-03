@@ -12,16 +12,17 @@
                 chart: null,
 
                 drawChart(component) {
-                    this.renderApex(component)
-                },
-
-                renderApex(component) {
                     if (this.chart) {
                         this.chart.destroy()
                     }
 
+                    const animated = component.get('columnChartModel.animated') || false;
+                    const onColumnClickEventName = component.get('columnChartModel.onColumnClickEventName')
+                    const dataLabels = component.get('columnChartModel.dataLabels') || {};
+                    const data = component.get('columnChartModel.data');
+
                     const options = {
-                        series: [{ data: component.get('columnChartModel.data').map(item => item.value)}],
+                        series: [{ data: data.map(item => item.value)}],
 
                         chart: {
                             type: 'bar',
@@ -32,29 +33,27 @@
                             },
 
                             animations: {
-                                enabled: component.get('columnChartModel.animated') || false,
+                                enabled: animated,
                             },
 
                             events: {
                                 dataPointSelection: function(event, chartContext, config) {
-                                    const onColumnClickEventName = component.get('columnChartModel.onColumnClickEventName')
-
                                     if (!onColumnClickEventName) {
                                         return
                                     }
 
                                     const { dataPointIndex } = config
-                                    const column = component.get('columnChartModel.data')[dataPointIndex]
+                                    const column = data[dataPointIndex]
                                     component.call('onColumnClick', column)
                                 },
                             }
                         },
 
-                        colors: component.get('columnChartModel.data').map(item => item.color),
+                        colors: data.map(item => item.color),
 
                         labels: {
                             style: {
-                                colors: component.get('columnChartModel.data').map(item => item.color),
+                                colors: data.map(item => item.color),
                             },
                         },
 
@@ -68,12 +67,10 @@
                             },
                         },
 
-                        dataLabels: {
-                            enabled: false,
-                        },
+                        dataLabels: dataLabels,
 
                         xaxis: {
-                            categories: component.get('columnChartModel.data').map(item => item.title),
+                            categories: data.map(item => item.title),
                         },
 
                         yaxis: {
