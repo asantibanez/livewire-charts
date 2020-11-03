@@ -11,8 +11,6 @@ class PieChartModel extends BaseChartModel
 {
     public $title;
 
-    public $animated;
-
     public $onSliceClickEventName;
 
     public $opacity;
@@ -25,8 +23,6 @@ class PieChartModel extends BaseChartModel
 
         $this->title = '';
 
-        $this->animated = false;
-
         $this->onSliceClickEventName = null;
 
         $this->opacity = 0.75;
@@ -37,13 +33,6 @@ class PieChartModel extends BaseChartModel
     public function setTitle($title)
     {
         $this->title = $title;
-
-        return $this;
-    }
-
-    public function setAnimated($animated)
-    {
-        $this->animated = $animated;
 
         return $this;
     }
@@ -78,7 +67,6 @@ class PieChartModel extends BaseChartModel
     {
         return array_merge(parent::toArray(), [
             'title' => $this->title,
-            'animated' => $this->animated,
             'onSliceClickEventName' => $this->onSliceClickEventName,
             'opacity' => $this->opacity,
             'data' => $this->data->toArray(),
@@ -90,8 +78,6 @@ class PieChartModel extends BaseChartModel
         parent::fromArray($array);
 
         $this->title = data_get($array, 'title', '');
-
-        $this->animated = data_get($array, 'animated', false);
 
         $this->onSliceClickEventName = data_get($array, 'onSliceClickEventName', null);
 

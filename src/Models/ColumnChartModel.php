@@ -11,8 +11,6 @@ class ColumnChartModel extends BaseChartModel
 {
     public $title;
 
-    public $animated;
-
     public $opacity;
 
     public $onColumnClickEventName;
@@ -25,8 +23,6 @@ class ColumnChartModel extends BaseChartModel
 
         $this->title = '';
 
-        $this->animated = false;
-
         $this->onColumnClickEventName = null;
 
         $this->opacity = 0.5;
@@ -37,13 +33,6 @@ class ColumnChartModel extends BaseChartModel
     public function setTitle($title)
     {
         $this->title = $title;
-
-        return $this;
-    }
-
-    public function setAnimated($animated)
-    {
-        $this->animated = $animated;
 
         return $this;
     }
@@ -78,7 +67,6 @@ class ColumnChartModel extends BaseChartModel
     {
         return array_merge(parent::toArray(), [
             'title' => $this->title,
-            'animated' => $this->animated,
             'onColumnClickEventName' => $this->onColumnClickEventName,
             'opacity' => $this->opacity,
             'data' => $this->data->toArray(),
@@ -90,8 +78,6 @@ class ColumnChartModel extends BaseChartModel
         parent::fromArray($array);
 
         $this->title = data_get($array, 'title', '');
-
-        $this->animated = data_get($array, 'animated', false);
 
         $this->onColumnClickEventName = data_get($array, 'onColumnClickEventName', null);
 

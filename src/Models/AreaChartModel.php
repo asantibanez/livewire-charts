@@ -11,8 +11,6 @@ class AreaChartModel extends BaseChartModel
 {
     public $title;
 
-    public $animated;
-
     public $color;
 
     public $data;
@@ -25,8 +23,6 @@ class AreaChartModel extends BaseChartModel
 
         $this->title = '';
 
-        $this->animated = false;
-
         $this->color = '#90cdf4';
 
         $this->onPointClickEventName = null;
@@ -37,13 +33,6 @@ class AreaChartModel extends BaseChartModel
     public function setTitle($title)
     {
         $this->title = $title;
-
-        return $this;
-    }
-
-    public function setAnimated($animated)
-    {
-        $this->animated = $animated;
 
         return $this;
     }
@@ -77,7 +66,6 @@ class AreaChartModel extends BaseChartModel
     {
         return array_merge(parent::toArray(), [
             'title' => $this->title,
-            'animated' => $this->animated,
             'color' => $this->color,
             'onPointClickEventName' => $this->onPointClickEventName,
             'data' => $this->data->toArray(),
@@ -89,8 +77,6 @@ class AreaChartModel extends BaseChartModel
         parent::fromArray($array);
 
         $this->title = data_get($array, 'title', '');
-
-        $this->animated = data_get($array, 'animated', false);
 
         $this->color = data_get($array, 'color', '#90cdf4');
 
