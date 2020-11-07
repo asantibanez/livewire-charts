@@ -22,6 +22,11 @@
                     const onPointClickEventName = component.get('areaChartModel.onPointClickEventName')
                     const data = component.get('areaChartModel.data');
 
+                    const categories = component.get('areaChartModel.xAxis.categories').length > 0
+                        ? component.get('areaChartModel.xAxis.categories')
+                        : data.map(item => item.title)
+                    ;
+
                     var options = {
                         series: [{
                             name: title,
@@ -66,7 +71,10 @@
 
                         labels: data.map(item => item.title),
 
-                        xaxis: component.get('areaChartModel.xAxis') || {},
+                        xaxis: {
+                            labels: component.get('areaChartModel.xAxis.labels'),
+                            categories: categories,
+                        },
 
                         yaxis: component.get('areaChartModel.yAxis') || {},
 
