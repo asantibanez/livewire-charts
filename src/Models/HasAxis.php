@@ -10,7 +10,7 @@ trait HasAxis
 
     private $yAxis;
 
-    public function initAxis()
+    protected function initAxis()
     {
         $this->xAxis = $this->defaultXAxis();
         $this->yAxis = $this->defaultYAxis();
@@ -19,6 +19,7 @@ trait HasAxis
     private function defaultXAxis()
     {
         return [
+            'categories' => [],
             'labels' => [
                 'show' => true,
             ],
@@ -35,6 +36,13 @@ trait HasAxis
     public function setXAxisVisible($visible)
     {
         data_set($this->xAxis, 'labels.show', $visible);
+
+        return $this;
+    }
+
+    public function setXAxisCategories($categories = [])
+    {
+        data_set($this->xAxis, 'categories', $categories);
 
         return $this;
     }

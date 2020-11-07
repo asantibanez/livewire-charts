@@ -28,7 +28,9 @@
                         }
                     })
 
-                    const categories = []
+                    const categories = component.get('lineChartModel.xAxis.categories').length > 0
+                        ? component.get('lineChartModel.xAxis.categories')
+                        : data[series[0].name].map(item => item.title)
 
                     const options = {
                         series: series,
@@ -68,7 +70,7 @@
                         },
 
                         xaxis: {
-                            ...component.get('lineChartModel.xAxis') || {},
+                            labels: component.get('lineChartModel.xAxis.labels'),
                             categories: categories,
                         },
 
