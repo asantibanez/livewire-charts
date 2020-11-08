@@ -138,6 +138,7 @@ for each type of chart.
 | withoutDataLabels() | Disables data labels |
 | withLegends() | Shows legends |
 | withoutLegends() | Hides legends |
+| setXAxisCategories(array $categories) | Enables custom categories for chart X Axis |
 
 #### LivewireLineChart
 
@@ -155,6 +156,9 @@ for each type of chart.
 | Method | Description |
 |--------|-------------|
 | setOpacity(int $opacity) | Sets columns' opacity |
+| multiColumn() | Sets chart to display multiple column series |
+| singleColumn() | Sets chart to display a single column series |
+| stacked() | Sets chart to display column series stacked |
 | addColumn(string $title, double $value, string $color, array $extras = []) | Adds a column to the chart with the specified color. `$extras` is forwarded on click event |
 | onColumnClickEventName(string $eventName) | Event Name that will be fired when a column of the chart is clicked |
 

@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.4.0 - 2020-11-07
+
+- Added Multi Column Chart 
+- Added Stacked Multi Column Chart 
+- Added support for custom X Axis categories
+
 ## 1.3.0 - 2020-11-03
 
 - Added Multi Line Chart 
