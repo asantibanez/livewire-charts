@@ -31,6 +31,10 @@ class LivewireColumnChart extends Component
 
     public function render()
     {
+        if ($this->columnChartModel['isMultiColumn']) {
+            return view('livewire-charts::livewire-multi-column-chart');
+        }
+
         return view('livewire-charts::livewire-column-chart');
     }
 }

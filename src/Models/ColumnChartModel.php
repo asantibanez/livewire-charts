@@ -6,10 +6,13 @@ namespace Asantibanez\LivewireCharts\Models;
 /**
  * Class ColumnChartModel
  * @package Asantibanez\LivewireCharts\Models
+ * @property boolean $isMultiColumn
  */
 class ColumnChartModel extends BaseChartModel
 {
     public $opacity;
+
+    public $isMultiColumn;
 
     public $onColumnClickEventName;
 
@@ -23,7 +26,23 @@ class ColumnChartModel extends BaseChartModel
 
         $this->opacity = 0.5;
 
+        $this->isMultiColumn = false;
+
         $this->data = collect();
+    }
+
+    public function multiColumn()
+    {
+        $this->isMultiColumn = true;
+
+        return $this;
+    }
+
+    public function singleColumn()
+    {
+        $this->isMultiColumn = false;
+
+        return $this;
     }
 
     public function setOpacity($opacity)
@@ -52,11 +71,28 @@ class ColumnChartModel extends BaseChartModel
         return $this;
     }
 
+    public function addSeriesColumn($seriesName, $title, $value, $extras = [])
+    {
+        $series = $this->data->get($seriesName, collect());
+
+        $series->push([
+            'seriesName' => $seriesName,
+            'title' => $title,
+            'value' => $value,
+            'extras' => $extras,
+        ]);
+
+        $this->data->put($seriesName, $series);
+
+        return $this;
+    }
+
     public function toArray()
     {
         return array_merge(parent::toArray(), [
             'onColumnClickEventName' => $this->onColumnClickEventName,
             'opacity' => $this->opacity,
+            'isMultiColumn' => $this->isMultiColumn,
             'data' => $this->data->toArray(),
         ]);
     }
@@ -68,6 +104,8 @@ class ColumnChartModel extends BaseChartModel
         $this->onColumnClickEventName = data_get($array, 'onColumnClickEventName', null);
 
         $this->opacity = data_get($array, 'opacity', 0.5);
+
+        $this->isMultiColumn = data_get($array, 'isMultiColumn', false);
 
         $this->data = collect(data_get($array, 'data', []));
     }
