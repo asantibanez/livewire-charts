@@ -53,8 +53,7 @@
                                         return
                                     }
 
-                                    const seriesName = Object.keys(data)[Object.keys(data).findIndex((el, index) => index === seriesIndex)]
-                                    const point = data[seriesName][dataPointIndex]
+                                    const point = data[series[seriesIndex].name][dataPointIndex]
                                     component.call('onPointClick', point)
                                 }
                             }
