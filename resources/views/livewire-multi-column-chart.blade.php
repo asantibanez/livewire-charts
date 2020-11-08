@@ -16,6 +16,7 @@
                         this.chart.destroy()
                     }
 
+                    const stacked = component.get('columnChartModel.isStacked');
                     const animated = component.get('columnChartModel.animated');
                     const onColumnClickEventName = component.get('columnChartModel.onColumnClickEventName')
                     const dataLabels = component.get('columnChartModel.dataLabels');
@@ -38,6 +39,7 @@
                         chart: {
                             type: 'bar',
                             height: '100%',
+                            stacked: stacked,
 
                             toolbar: { show: false },
 

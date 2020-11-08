@@ -7,12 +7,15 @@ namespace Asantibanez\LivewireCharts\Models;
  * Class ColumnChartModel
  * @package Asantibanez\LivewireCharts\Models
  * @property boolean $isMultiColumn
+ * @property boolean $isStacked
  */
 class ColumnChartModel extends BaseChartModel
 {
     public $opacity;
 
     public $isMultiColumn;
+
+    public $isStacked;
 
     public $onColumnClickEventName;
 
@@ -28,6 +31,8 @@ class ColumnChartModel extends BaseChartModel
 
         $this->isMultiColumn = false;
 
+        $this->isStacked = false;
+
         $this->data = collect();
     }
 
@@ -41,6 +46,13 @@ class ColumnChartModel extends BaseChartModel
     public function singleColumn()
     {
         $this->isMultiColumn = false;
+
+        return $this;
+    }
+
+    public function stacked()
+    {
+        $this->isStacked = true;
 
         return $this;
     }
@@ -93,6 +105,7 @@ class ColumnChartModel extends BaseChartModel
             'onColumnClickEventName' => $this->onColumnClickEventName,
             'opacity' => $this->opacity,
             'isMultiColumn' => $this->isMultiColumn,
+            'isStacked' => $this->isStacked,
             'data' => $this->data->toArray(),
         ]);
     }
@@ -106,6 +119,8 @@ class ColumnChartModel extends BaseChartModel
         $this->opacity = data_get($array, 'opacity', 0.5);
 
         $this->isMultiColumn = data_get($array, 'isMultiColumn', false);
+
+        $this->isStacked = data_get($array, 'isStacked', false);
 
         $this->data = collect(data_get($array, 'data', []));
     }
