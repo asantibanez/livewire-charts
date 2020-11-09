@@ -139,6 +139,8 @@ for each type of chart.
 | withLegends() | Shows legends |
 | withoutLegends() | Hides legends |
 | setXAxisCategories(array $categories) | Enables custom categories for chart X Axis |
+| sparklined() | Enables Apex Charts sparkline feature |
+| setSparklineEnabled(boolean $isEnabled) | Enables/Disables Apex Charts sparkline feature |
 
 #### LivewireLineChart
 

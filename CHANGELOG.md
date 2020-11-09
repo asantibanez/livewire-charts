@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.4.1 - 2020-11-09
+
+- Added `LivewireCharts` facade to create any chart model
+- Added `sparklined` Apex Chart feature to all charts (https://apexcharts.com/javascript-chart-demos/sparklines/basic/)
+
 ## 1.4.0 - 2020-11-07
 
 - Added Multi Column Chart 
