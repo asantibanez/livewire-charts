@@ -1,5 +1,5 @@
 <div
-    class="w-full h-full"
+    style="width: 100%; height: 100%;"
     x-data="{ ...multiLineChart() }"
     x-init="drawChart(@this)"
 >

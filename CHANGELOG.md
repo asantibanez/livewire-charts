@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.5.2 - 2020-11-09
+
+- Fixed infinite growing charts
+
 ## 1.5.1 - 2020-11-09
 
 - Removed unused Alpine directives
