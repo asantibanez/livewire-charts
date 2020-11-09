@@ -2,7 +2,6 @@
     class="w-full h-full"
     x-data="{ ...multiColumnChart() }"
     x-init="drawChart(@this)"
-    x-on:draw-column-chart.window="drawChart(@this)"
 >
     <div wire:ignore x-ref="container"></div>
 
