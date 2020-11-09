@@ -35,6 +35,6 @@ class LivewireChartsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind('livewirecharts', LivewireCharts::class);
     }
 }
