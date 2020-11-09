@@ -20,6 +20,7 @@
                     const dataLabels = component.get('lineChartModel.dataLabels') || {};
                     const data = component.get('lineChartModel.data');
                     const onPointClickEventName = component.get('lineChartModel.onPointClickEventName');
+                    const sparkline = component.get('lineChartModel.sparkline');
 
                     const series = [{
                         name: title,
@@ -36,15 +37,15 @@
                         chart: {
                             type: 'line',
                             height: '100%',
-                            zoom: {
-                                enabled: false
-                            },
-                            toolbar: {
-                                show: false
-                            },
-                            animations: {
-                                enabled: animated,
-                            },
+
+                            ...sparkline,
+
+                            zoom: { enabled: false },
+
+                            toolbar: { show: false },
+
+                            animations: { enabled: animated },
+
                             events: {
                                 markerClick: function(event, chartContext, { dataPointIndex }) {
                                     if (!onPointClickEventName) {

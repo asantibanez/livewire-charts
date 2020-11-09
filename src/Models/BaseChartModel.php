@@ -15,6 +15,7 @@ class BaseChartModel
     use HasStroke;
     use HasLegend;
     use HasDataLabels;
+    use HasSparkline;
 
     public function __construct()
     {
@@ -24,6 +25,7 @@ class BaseChartModel
         $this->initStroke();
         $this->initLegend();
         $this->initDataLabels();
+        $this->initSparkline();
     }
 
     public function reactiveKey()
@@ -39,7 +41,8 @@ class BaseChartModel
             $this->axisToArray(),
             $this->strokeToArray(),
             $this->legendToArray(),
-            $this->dataLabelsToArray()
+            $this->dataLabelsToArray(),
+            $this->sparklineToArray()
         );
     }
 
@@ -51,5 +54,6 @@ class BaseChartModel
         $this->strokeFromArray($array);
         $this->legendFromArray($array);
         $this->dataLabelsFromArray($array);
+        $this->sparklineFromArray($array);
     }
 }

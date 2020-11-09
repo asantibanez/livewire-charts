@@ -20,6 +20,7 @@
                     const onColumnClickEventName = component.get('columnChartModel.onColumnClickEventName')
                     const dataLabels = component.get('columnChartModel.dataLabels') || {};
                     const data = component.get('columnChartModel.data');
+                    const sparkline = component.get('columnChartModel.sparkline');
 
                     const options = {
                         series: [{ data: data.map(item => item.value)}],
@@ -28,13 +29,11 @@
                             type: 'bar',
                             height: '100%',
 
-                            toolbar: {
-                                show: false
-                            },
+                            ...sparkline,
 
-                            animations: {
-                                enabled: animated,
-                            },
+                            toolbar: { show: false },
+
+                            animations: { enabled: animated },
 
                             events: {
                                 dataPointSelection: function(event, chartContext, config) {

@@ -21,6 +21,7 @@
                     const onColumnClickEventName = component.get('columnChartModel.onColumnClickEventName')
                     const dataLabels = component.get('columnChartModel.dataLabels');
                     const data = component.get('columnChartModel.data');
+                    const sparkline = component.get('columnChartModel.sparkline');
 
                     const series = Object.keys(data)
                         .map(seriesName => ({
@@ -40,6 +41,8 @@
                             type: 'bar',
                             height: '100%',
                             stacked: stacked,
+
+                            ...sparkline,
 
                             toolbar: { show: false },
 

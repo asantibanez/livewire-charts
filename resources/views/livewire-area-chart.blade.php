@@ -21,6 +21,7 @@
                     const dataLabels = component.get('areaChartModel.dataLabels') || {};
                     const onPointClickEventName = component.get('areaChartModel.onPointClickEventName')
                     const data = component.get('areaChartModel.data');
+                    const sparkline = component.get('areaChartModel.sparkline');
 
                     const categories = component.get('areaChartModel.xAxis.categories').length > 0
                         ? component.get('areaChartModel.xAxis.categories')
@@ -36,13 +37,13 @@
                             type: 'area',
                             height: '100%',
 
+                            ...sparkline,
+
                             zoom: { enabled: false },
 
                             toolbar: { show: false },
 
-                            animations: {
-                                enabled: animated,
-                            },
+                            animations: { enabled: animated },
 
                             events: {
                                 markerClick: function(event, chartContext, { dataPointIndex }) {

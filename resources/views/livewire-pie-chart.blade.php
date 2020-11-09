@@ -20,6 +20,7 @@
                     const dataLabels = component.get('pieChartModel.dataLabels') || {}
                     const onSliceClickEventName = component.get('pieChartModel.onSliceClickEventName')
                     const data = component.get('pieChartModel.data')
+                    const sparkline = component.get('pieChartModel.sparkline')
 
                     const options = {
                         series: data.map(item => item.value),
@@ -28,9 +29,9 @@
                             height: '100%',
                             type: 'pie',
 
-                            animations: {
-                                enabled: animated,
-                            },
+                            ...sparkline,
+
+                            animations: { enabled: animated },
 
                             events: {
                                 dataPointSelection: function(event, chartContext, config) {
