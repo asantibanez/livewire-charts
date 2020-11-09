@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.5.1 - 2020-11-09
+
+- Removed unused Alpine directives
+
 ## 1.5.0 - 2020-11-09
 
 - Added `LivewireCharts` facade to create any chart model
