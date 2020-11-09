@@ -71,6 +71,19 @@ And that's it! You have a beautiful rendered chart in seconds. 👌
 >Note: You can use these charts inside other Livewire components too. Just render them in your Blade template and you
 are good to go. 👍 
 
+## LivewireCharts facade
+
+Chart models can also be created using the `LivewireCharts` facade.
+
+```php
+LivewireCharts::lineChartModel();
+LivewireCharts::multiLineChartModel();
+LivewireCharts::columnChartModel();
+LivewireCharts::multiColumnChartModel();
+LivewireCharts::pieChartModel();
+LivewireCharts::areaChartModel();
+```
+
 ## Enabling Interactions
 
 To enable click events, you must use the `with[XXX]ClickEvent($eventName)` method present in every model class and 
