@@ -1,12 +1,12 @@
 <div
     style="width: 100%; height: 100%;"
-    x-data="{ ...pieChart() }"
+    x-data="{ ...asantibanezPieChart() }"
     x-init="drawChart(@this)"
 >
     <div wire:ignore x-ref="container"></div>
 
     <script>
-        function pieChart() {
+        window.asantibanezPieChart = function pieChart() {
             return {
                 chart: null,
 

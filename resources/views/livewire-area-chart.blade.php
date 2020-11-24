@@ -1,12 +1,12 @@
 <div
     style="width: 100%; height: 100%;"
-    x-data="{ ...areaChart() }"
+    x-data="{ ...asantibanezAreaChart() }"
     x-init="drawChart(@this)"
 >
     <div wire:ignore x-ref="container"></div>
 
     <script>
-        function areaChart() {
+        window.asantibanezAreaChart = function areaChart() {
             return {
                 chart: null,
 

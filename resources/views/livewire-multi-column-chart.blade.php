@@ -1,12 +1,12 @@
 <div
     style="width: 100%; height: 100%;"
-    x-data="{ ...multiColumnChart() }"
+    x-data="{ ...asantibanezMultiColumnChart() }"
     x-init="drawChart(@this)"
 >
     <div wire:ignore x-ref="container"></div>
 
     <script>
-        function multiColumnChart() {
+        window.asantibanezMultiColumnChart = function multiColumnChart() {
             return {
                 chart: null,
 

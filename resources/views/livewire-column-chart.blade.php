@@ -1,12 +1,12 @@
 <div
     style="width: 100%; height: 100%;"
-    x-data="{ ...columnChart() }"
+    x-data="{ ...asantibanezColumnChart() }"
     x-init="drawChart(@this)"
 >
     <div wire:ignore x-ref="container"></div>
 
     <script>
-        function columnChart() {
+        window.asantibanezColumnChart = function columnChart() {
             return {
                 chart: null,
 
