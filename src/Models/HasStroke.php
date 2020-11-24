@@ -7,6 +7,7 @@ namespace Asantibanez\LivewireCharts\Models;
 trait HasStroke
 {
     private $stroke;
+    private $width;
 
     public function initStroke()
     {
@@ -17,6 +18,7 @@ trait HasStroke
     {
         return [
             'curve' => 'straight',
+            'width' => 4
         ];
     }
 
@@ -30,6 +32,13 @@ trait HasStroke
     public function setStraightCurve()
     {
         data_set($this->stroke, 'curve', 'straight');
+
+        return $this;
+    }
+
+    public function setStrokeWidth($width)
+    {
+        data_set($this->stroke, 'width', $width);
 
         return $this;
     }
