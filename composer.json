@@ -1,6 +1,6 @@
 {
-    "name": "asantibanez/livewire-charts",
-    "description": "Livewire Charts",
+    "name": "acacha/livewire-charts",
+    "description": "Livewire Charts. Fork (temporary) from asantibanez/livewire-charts",
     "keywords": [
         "asantibanez",
         "livewire-charts"
@@ -12,6 +12,11 @@
         {
             "name": "Andrés Santibáñez",
             "email": "santibanez.andres@gmail.com",
+            "role": "Developer"
+        },
+        {
+            "name": "Sergi Tur Badenas",
+            "email": "sergiturbadenas@gmail.com",
             "role": "Developer"
         }
     ],
