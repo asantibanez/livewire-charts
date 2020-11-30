@@ -5,3 +5,4 @@ docs
 vendor
 coverage
 .DS_STORE
+node_modules
