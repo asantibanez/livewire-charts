@@ -18,6 +18,10 @@ You can install the package via composer:
 composer require asantibanez/livewire-charts
 ```
 
+Next, you must export the package public scripts. To do this run `php artisan vendor:publish` 
+and export `livewire-charts:public`. This command will export a `vendor/livewire-charts` folder under the 
+`public` directory of your app.
+
 ## Requirements
 
 This package requires the following packages/libraries to work:
@@ -32,9 +36,9 @@ Please follow each package/library instructions on how to set them properly in y
 ## Usage
 
 Livewire Charts supports out of the box the following types of charts
-- Line Chart (`LivewireLineChart` component)
+- Line/Multi Line Chart (`LivewireLineChart` component)
 - Pie Chart (`LivewirePieChart` component)
-- Column Chart (`LivewireColumnChart` component)
+- Column/Multi Line Chart (`LivewireColumnChart` component)
 - Area Chart (`LivewireAreaChart` component)
 
 Each one comes with its own "model" class that allows you to define the chart's data and render behavior. 
@@ -63,6 +67,13 @@ With `$columnChartModel` at hand, we pass it to our `LivewireColumnChart` compon
     :column-chart-model="$columnChartModel"
 />
 ``` 
+
+Next, include the `@livewireChartsScripts` directive next to your other app scripts
+
+```html
+<livewire:scripts />
+@livewireChartsScripts
+```
 
 And that's it! You have a beautiful rendered chart in seconds. 👌
 
@@ -195,6 +206,15 @@ for each type of chart.
 | withOnPointClickEvent(string $eventName) | Event Name that will be fired when a point of the chart is clicked |
 | setXAxisVisible(boolean $visible) | Shows/hides xAxis labels |
 | setYAxisVisible(boolean $visible) | Shows/hides yAxis labels |
+
+## Advanced Usage - Integrating Scripts
+
+The directive `@livewireChartsScripts` adds a `script` tag that includes `public/vendor/livewire-charts/app.js`.
+If you want to include this script in your build system, you can export the package scripts 
+with `php artisan vendor:publish` and selecting `livewire-charts:scripts`. This will export `js/vendor/livewire-charts`
+inside your resources folder. You can then adjust imports as you see fit in your project.
+
+>Note: You must remove @livewireChartsScripts directive so it doesn't clash with the scripts in your build system. 
 
 ## Troubleshooting
 
