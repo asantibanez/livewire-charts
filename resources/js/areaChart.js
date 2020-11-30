@@ -53,9 +53,7 @@ const areaChart = () => {
 
                 colors: [component.get('areaChartModel.color') || '#2E93fA'],
 
-                stroke: {
-                    curve: 'straight'
-                },
+                stroke: component.get('areaChartModel.stroke') || {},
 
                 title: {
                     text: title,
