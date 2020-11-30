@@ -151,8 +151,8 @@ for each type of chart.
 | setDataLabelsEnabled(boolean $enabled) | Enables/disables data labels |
 | withDataLabels() | Enables data labels |
 | withoutDataLabels() | Disables data labels |
-| withLegends() | Shows legends |
-| withoutLegends() | Hides legends |
+| withLegend() | Shows legends |
+| withoutLegend() | Hides legends |
 | setXAxisCategories(array $categories) | Enables custom categories for chart X Axis |
 | sparklined() | Enables Apex Charts sparkline feature |
 | setSparklineEnabled(boolean $isEnabled) | Enables/Disables Apex Charts sparkline feature |
