@@ -6,3 +6,4 @@ vendor
 coverage
 .DS_STORE
 node_modules
+.phpunit.result.cache
