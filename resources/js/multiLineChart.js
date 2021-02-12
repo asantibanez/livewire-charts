@@ -76,6 +76,12 @@ const multiLineChart = () => {
                 yaxis: component.get('lineChartModel.yAxis') || {},
             };
 
+            const colors = component.get('lineChartModel.colors');
+
+            if (colors && colors.length > 0) {
+                options['colors'] = colors
+            }
+
             this.chart = new ApexCharts(this.$refs.container, options);
             this.chart.render();
         }
