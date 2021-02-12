@@ -16,6 +16,8 @@ class BaseChartModel
     use HasLegend;
     use HasDataLabels;
     use HasSparkline;
+    use HasGrid;
+    use HasColors;
 
     public function __construct()
     {
@@ -26,6 +28,8 @@ class BaseChartModel
         $this->initLegend();
         $this->initDataLabels();
         $this->initSparkline();
+        $this->initGrid();
+        $this->initColors();
     }
 
     public function reactiveKey()
@@ -42,7 +46,9 @@ class BaseChartModel
             $this->strokeToArray(),
             $this->legendToArray(),
             $this->dataLabelsToArray(),
-            $this->sparklineToArray()
+            $this->sparklineToArray(),
+            $this->gridToArray(),
+            $this->colorsToArray()
         );
     }
 
@@ -55,5 +61,7 @@ class BaseChartModel
         $this->legendFromArray($array);
         $this->dataLabelsFromArray($array);
         $this->sparklineFromArray($array);
+        $this->gridFromArray($array);
+        $this->colorsFromArray($array);
     }
 }
