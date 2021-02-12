@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.6.0 - 2021-02-12
+
+- Added `init()` method for better boot and $wire hoisting
+- Added color customization for columns and pie chart
+
 ## 1.5.2 - 2020-11-09
 
 - Fixed infinite growing charts

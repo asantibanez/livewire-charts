@@ -164,6 +164,8 @@ for each type of chart.
 | withoutDataLabels() | Disables data labels |
 | withLegend() | Shows legends |
 | withoutLegend() | Hides legends |
+| setColors(array $colors) | Set colors for chart |
+| addColors(string $color) | Append $color to $colors set |
 | setXAxisCategories(array $categories) | Enables custom categories for chart X Axis |
 | sparklined() | Enables Apex Charts sparkline feature |
 | setSparklineEnabled(boolean $isEnabled) | Enables/Disables Apex Charts sparkline feature |
@@ -184,6 +186,8 @@ for each type of chart.
 | Method | Description |
 |--------|-------------|
 | setOpacity(int $opacity) | Sets columns' opacity |
+| setColumnWidth(int $columnWidth) | Sets columns' width |
+| setHorizontal(boolean $value) | Sets columns or bars |
 | multiColumn() | Sets chart to display multiple column series |
 | singleColumn() | Sets chart to display a single column series |
 | stacked() | Sets chart to display column series stacked |
