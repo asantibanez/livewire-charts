@@ -3,6 +3,12 @@ const pieChart = () => {
     return {
         chart: null,
 
+        init() {
+            setTimeout(() => {
+                this.drawChart(this.$wire)
+            }, 0)
+        },
+
         drawChart(component) {
             if (this.chart) {
                 this.chart.destroy()
@@ -67,6 +73,12 @@ const pieChart = () => {
 
                 legend: component.get('pieChartModel.legend') || {},
             };
+
+            const colors = component.get('pieChartModel.colors');
+
+            if (colors && colors.length > 0) {
+                options['colors'] = colors
+            }
 
             this.chart = new ApexCharts(this.$refs.container, options);
             this.chart.render();

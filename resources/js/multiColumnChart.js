@@ -18,14 +18,13 @@ const multiColumnChart = () => {
             const animated = component.get('columnChartModel.animated');
             const onColumnClickEventName = component.get('columnChartModel.onColumnClickEventName')
             const dataLabels = component.get('columnChartModel.dataLabels');
-            const data = component.get('columnChartModel.data');
             const sparkline = component.get('columnChartModel.sparkline');
             const legend = component.get('columnChartModel.legend')
-            const colors = component.get('columnChartModel.colors');
             const grid = component.get('columnChartModel.grid');
             const columnWidth = component.get('columnChartModel.columnWidth');
             const horizontal = component.get('columnChartModel.horizontal');
 
+            const data = component.get('columnChartModel.data');
             const series = Object.keys(data)
                 .map(seriesName => ({
                     name: seriesName,
@@ -90,6 +89,8 @@ const multiColumnChart = () => {
                     opacity: component.get('columnChartModel.opacity'),
                 },
             };
+
+            const colors = component.get('columnChartModel.colors');
 
             if (colors && colors.length > 0) {
                 options['colors'] = colors

@@ -3,6 +3,12 @@ const areaChart = () => {
     return {
         chart: null,
 
+        init() {
+            setTimeout(() => {
+                this.drawChart(this.$wire)
+            }, 0)
+        },
+
         drawChart(component) {
             if (this.chart) {
                 this.chart.destroy()

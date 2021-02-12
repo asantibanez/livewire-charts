@@ -3,6 +3,12 @@ const columnChart = () => {
     return {
         chart: null,
 
+        init() {
+            setTimeout(() => {
+                this.drawChart(this.$wire)
+            }, 0)
+        },
+
         drawChart(component) {
             if (this.chart) {
                 this.chart.destroy()
@@ -11,11 +17,17 @@ const columnChart = () => {
             const animated = component.get('columnChartModel.animated') || false;
             const onColumnClickEventName = component.get('columnChartModel.onColumnClickEventName')
             const dataLabels = component.get('columnChartModel.dataLabels') || {};
-            const data = component.get('columnChartModel.data');
             const sparkline = component.get('columnChartModel.sparkline');
+            const legend = component.get('columnChartModel.legend')
+            const grid = component.get('columnChartModel.grid');
+            const columnWidth = component.get('columnChartModel.columnWidth');
+            const horizontal = component.get('columnChartModel.horizontal');
+
+            const data = component.get('columnChartModel.data');
+            const series = [{ data: data.map(item => item.value)}]
 
             const options = {
-                series: [{ data: data.map(item => item.value)}],
+                series: series,
 
                 chart: {
                     type: 'bar',
@@ -48,12 +60,14 @@ const columnChart = () => {
                     },
                 },
 
-                legend: component.get('columnChartModel.legend') || {},
+                legend: legend,
+
+                grid: grid,
 
                 plotOptions: {
                     bar: {
-                        horizontal: false,
-                        columnWidth: '40%',
+                        horizontal: horizontal,
+                        columnWidth: `${columnWidth}%`,
                         distributed: true,
                     },
                 },
@@ -74,6 +88,12 @@ const columnChart = () => {
                     opacity: component.get('columnChartModel.opacity') || 0.5
                 },
             };
+
+            const colors = component.get('columnChartModel.colors');
+
+            if (colors && colors.length > 0) {
+                options['colors'] = colors
+            }
 
             this.chart = new ApexCharts(this.$refs.container, options);
             this.chart.render();
