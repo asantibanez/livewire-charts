@@ -1,9 +1,22 @@
 # Changelog
 
-## 1.6.0 - 2021-02-12
-
+## 2.3.0 - 2021-02-12
 - Added `init()` method for better boot and $wire hoisting
 - Added color customization for columns, multiline and pie chart
+
+## 2.2.0 - 2020-12-16
+- Added support for PHP 8
+- Updated docs 
+- Added base tests for components and CI
+
+## 2.1.0 - 2020-11-30
+- Added stroke width customization
+- Added stroke support for Area Chart
+
+## 2.0.0 - 2020-11-30
+- Added build system for JS charts code
+- Added Blade directive to include assets
+- Updated installation and advanced usage instructions
 
 ## 1.5.2 - 2020-11-09
 
