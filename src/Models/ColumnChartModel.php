@@ -13,6 +13,10 @@ class ColumnChartModel extends BaseChartModel
 {
     public $opacity;
 
+    public $columnWidth;
+
+    public $horizontal;
+
     public $isMultiColumn;
 
     public $isStacked;
@@ -27,7 +31,11 @@ class ColumnChartModel extends BaseChartModel
 
         $this->onColumnClickEventName = null;
 
-        $this->opacity = 0.5;
+        $this->opacity = 0.75;
+
+        $this->columnWidth = 70;
+
+        $this->horizontal = false;
 
         $this->isMultiColumn = false;
 
@@ -53,6 +61,20 @@ class ColumnChartModel extends BaseChartModel
     public function stacked()
     {
         $this->isStacked = true;
+
+        return $this;
+    }
+
+    public function setHorizontal($value)
+    {
+        $this->horizontal = $value;
+
+        return $this;
+    }
+
+    public function setColumnWidth($value)
+    {
+        $this->columnWidth = $value;
 
         return $this;
     }
@@ -104,6 +126,8 @@ class ColumnChartModel extends BaseChartModel
         return array_merge(parent::toArray(), [
             'onColumnClickEventName' => $this->onColumnClickEventName,
             'opacity' => $this->opacity,
+            'horizontal' => $this->horizontal,
+            'columnWidth' => $this->columnWidth,
             'isMultiColumn' => $this->isMultiColumn,
             'isStacked' => $this->isStacked,
             'data' => $this->data->toArray(),
@@ -117,6 +141,10 @@ class ColumnChartModel extends BaseChartModel
         $this->onColumnClickEventName = data_get($array, 'onColumnClickEventName', null);
 
         $this->opacity = data_get($array, 'opacity', 0.5);
+
+        $this->columnWidth = data_get($array, 'columnWidth', 70);
+
+        $this->horizontal = data_get($array, 'horizontal', false);
 
         $this->isMultiColumn = data_get($array, 'isMultiColumn', false);
 
