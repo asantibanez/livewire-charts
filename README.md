@@ -20,7 +20,11 @@ composer require asantibanez/livewire-charts
 
 Next, you must export the package public scripts. To do this run `php artisan vendor:publish` 
 and export `livewire-charts:public`. This command will export a `vendor/livewire-charts` folder under the 
-`public` directory of your app.
+`public` directory of your app.  
+
+```bash
+php artisan vendor:publish --tag=livewire-charts:public
+```
 
 ## Requirements
 
