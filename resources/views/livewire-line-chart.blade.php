@@ -5,4 +5,3 @@
 >
     <div wire:ignore x-ref="container"></div>
 </div>
-
