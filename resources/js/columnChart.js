@@ -87,6 +87,9 @@ const columnChart = () => {
                 fill: {
                     opacity: component.get('columnChartModel.opacity') || 0.5
                 },
+
+                theme: component.get('columnChartModel.theme') || {},
+
             };
 
             const colors = component.get('columnChartModel.colors');

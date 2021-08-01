@@ -88,6 +88,9 @@ const multiColumnChart = () => {
                 fill: {
                     opacity: component.get('columnChartModel.opacity'),
                 },
+
+                theme: component.get('columnChartModel.theme') || {},
+
             };
 
             const colors = component.get('columnChartModel.colors');
