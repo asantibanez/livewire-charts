@@ -8,7 +8,7 @@ trait HasTheme
 {
     private $theme;
     private $mode;
-    private $pallete;
+    private $palette;
 
     /**
      * Initialize 
@@ -27,7 +27,7 @@ trait HasTheme
     {
         return [
             'mode' => 'light',
-            'pallete' => 'pallete1'
+            'palette' => 'palette1'
         ];
     }
 
@@ -90,9 +90,9 @@ trait HasTheme
      * 
      * @return $this
      */
-    public function setThemePallete(string $pallete)
+    public function setThemePalette(string $palette)
     {
-        data_set($this->theme, 'pallete', $pallete);
+        data_set($this->theme, 'palette', $palette);
 
         return $this;
     }
