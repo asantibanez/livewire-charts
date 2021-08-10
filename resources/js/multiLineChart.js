@@ -20,6 +20,7 @@ const multiLineChart = () => {
             const data = component.get('lineChartModel.data');
             const onPointClickEventName = component.get('lineChartModel.onPointClickEventName');
             const sparkline = component.get('lineChartModel.sparkline');
+            const config = component.get('lineChartModel.config');
 
             const series = Object.keys(data).map(key => {
                 return {
@@ -36,6 +37,7 @@ const multiLineChart = () => {
                 series: series,
 
                 chart: {
+                    fontFamily: config.font_family,
                     type: 'line',
                     height: '100%',
 

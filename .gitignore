@@ -1,9 +1,1 @@
-.idea
-build
-composer.lock
-docs
-vendor
-coverage
-.DS_STORE
-node_modules
-.phpunit.result.cache
+/node_modules

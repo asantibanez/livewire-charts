@@ -57,6 +57,7 @@ class AreaChartModel extends BaseChartModel
             'color' => $this->color,
             'onPointClickEventName' => $this->onPointClickEventName,
             'data' => $this->data->toArray(),
+            'config' => config('livewire-charts'),
         ]);
     }
 

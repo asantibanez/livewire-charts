@@ -131,6 +131,7 @@ class ColumnChartModel extends BaseChartModel
             'isMultiColumn' => $this->isMultiColumn,
             'isStacked' => $this->isStacked,
             'data' => $this->data->toArray(),
+            'config' => config('livewire-charts'),
         ]);
     }
 

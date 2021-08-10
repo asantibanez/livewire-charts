@@ -20,6 +20,7 @@ const lineChart = () => {
             const data = component.get('lineChartModel.data');
             const onPointClickEventName = component.get('lineChartModel.onPointClickEventName');
             const sparkline = component.get('lineChartModel.sparkline');
+            const config = component.get('lineChartModel.config');
 
             const series = [{
                 name: title,
@@ -34,6 +35,7 @@ const lineChart = () => {
                 series: series,
 
                 chart: {
+                    fontFamily: config.font_family,
                     type: 'line',
                     height: '100%',
 

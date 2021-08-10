@@ -17,9 +17,10 @@ const areaChart = () => {
             const title = component.get('areaChartModel.title');
             const animated = component.get('areaChartModel.animated') || false;
             const dataLabels = component.get('areaChartModel.dataLabels') || {};
-            const onPointClickEventName = component.get('areaChartModel.onPointClickEventName')
+            const onPointClickEventName = component.get('areaChartModel.onPointClickEventName');
             const data = component.get('areaChartModel.data');
             const sparkline = component.get('areaChartModel.sparkline');
+            const config = component.get('areaChartModel.config');
 
             const categories = component.get('areaChartModel.xAxis.categories').length > 0
                 ? component.get('areaChartModel.xAxis.categories')
@@ -32,6 +33,7 @@ const areaChart = () => {
                     data: data.map(item => item.value)
                 }],
                 chart: {
+                    fontFamily: config.font_family,
                     type: 'area',
                     height: '100%',
 

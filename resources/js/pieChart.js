@@ -15,16 +15,18 @@ const pieChart = () => {
             }
 
             const title = component.get('pieChartModel.title');
-            const animated = component.get('pieChartModel.animated') || false
-            const dataLabels = component.get('pieChartModel.dataLabels') || {}
-            const onSliceClickEventName = component.get('pieChartModel.onSliceClickEventName')
-            const data = component.get('pieChartModel.data')
-            const sparkline = component.get('pieChartModel.sparkline')
+            const animated = component.get('pieChartModel.animated') || false;
+            const dataLabels = component.get('pieChartModel.dataLabels') || {};
+            const onSliceClickEventName = component.get('pieChartModel.onSliceClickEventName');
+            const data = component.get('pieChartModel.data');
+            const sparkline = component.get('pieChartModel.sparkline');
+            const config = component.get('pieChartModel.config');
 
             const options = {
                 series: data.map(item => item.value),
 
                 chart: {
+                    fontFamily: config.font_family,
                     height: '100%',
                     type: 'pie',
 

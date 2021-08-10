@@ -58,6 +58,7 @@ class PieChartModel extends BaseChartModel
             'onSliceClickEventName' => $this->onSliceClickEventName,
             'opacity' => $this->opacity,
             'data' => $this->data->toArray(),
+            'config' => config('livewire-charts'),
         ]);
     }
 

@@ -111,6 +111,7 @@ class LineChartModel extends BaseChartModel
             'onPointClickEventName' => $this->onPointClickEventName,
             'data' => $this->data->toArray(),
             'markers' => $this->markers->toArray(),
+            'config' => config('livewire-charts'),
         ]);
     }
 

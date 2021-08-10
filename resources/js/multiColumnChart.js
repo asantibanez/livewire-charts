@@ -16,13 +16,14 @@ const multiColumnChart = () => {
 
             const stacked = component.get('columnChartModel.isStacked');
             const animated = component.get('columnChartModel.animated');
-            const onColumnClickEventName = component.get('columnChartModel.onColumnClickEventName')
+            const onColumnClickEventName = component.get('columnChartModel.onColumnClickEventName');
             const dataLabels = component.get('columnChartModel.dataLabels');
             const sparkline = component.get('columnChartModel.sparkline');
             const legend = component.get('columnChartModel.legend')
             const grid = component.get('columnChartModel.grid');
             const columnWidth = component.get('columnChartModel.columnWidth');
             const horizontal = component.get('columnChartModel.horizontal');
+            const config = component.get('columnChartModel.config');
 
             const data = component.get('columnChartModel.data');
             const series = Object.keys(data)
@@ -40,6 +41,7 @@ const multiColumnChart = () => {
                 series: series,
 
                 chart: {
+                    fontFamily: config.font_family,
                     type: 'bar',
                     height: '100%',
                     stacked: stacked,

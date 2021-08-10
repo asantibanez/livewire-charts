@@ -14,7 +14,7 @@ class LivewireChartsServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-         $this->registerViews();
+        $this->registerViews();
 
         $this->registerPublishables();
 
@@ -26,6 +26,9 @@ class LivewireChartsServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind('livewirecharts', LivewireCharts::class);
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/livewire-charts.php', 'livewire-charts'
+        );
     }
 
     private function registerViews()
@@ -47,6 +50,10 @@ class LivewireChartsServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__.'/../public' => public_path('vendor/livewire-charts'),
             ], 'livewire-charts:public');
+
+            $this->publishes([
+                __DIR__.'/../config/livewire-charts.php' => config_path('livewire-charts.php'),
+            ], 'livewire-charts:config');
         }
     }
 
