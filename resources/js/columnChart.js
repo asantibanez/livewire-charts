@@ -25,9 +25,7 @@ const columnChart = () => {
             const config = component.get('columnChartModel.config');
 
             const data = component.get('columnChartModel.data');
-            const series = [{ data: data.map(item => item.value)}]
-
-            console.log(config);
+            const series = [{ data: data.map(item => item.value)}];
 
             const options = {
                 series: series,
