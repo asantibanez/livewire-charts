@@ -21,6 +21,9 @@ const multiLineChart = () => {
             const onPointClickEventName = component.get('lineChartModel.onPointClickEventName');
             const sparkline = component.get('lineChartModel.sparkline');
             const config = component.get('lineChartModel.config');
+            const format_x = component.get('lineChartModel.format-x');
+            const format_y = component.get('lineChartModel.format-y');
+            const format_lable = component.get('lineChartModel.format-lable');
 
             const series = Object.keys(data).map(key => {
                 return {
@@ -76,12 +79,42 @@ const multiLineChart = () => {
                 },
 
                 yaxis: component.get('lineChartModel.yAxis') || {},
+
+                tooltip: {
+                    y: {
+                        formatter: function(value, s) {
+                            return component.get('lineChartModel.data')[series[s.seriesIndex].name][s.dataPointIndex].extras.formatted || value;
+                        }
+                    }
+                }
             };
 
             const colors = component.get('lineChartModel.colors');
 
             if (colors && colors.length > 0) {
                 options['colors'] = colors
+            }
+
+            if(format_x) {
+                options['xaxis']['labels'] = {
+                    formatter: function (value) {
+                        return number_format(value);
+                    }
+                }
+            }
+
+            if(format_y) {
+                options['yaxis']['labels'] = {
+                    formatter: function (value) {
+                        return number_format(value);
+                    }
+                }
+            }
+
+            if(format_lable) {
+                options['dataLabels']['formatter'] = function (value, opts) {
+                    return number_format(value);
+                }
             }
 
             this.chart = new ApexCharts(this.$refs.container, options);
