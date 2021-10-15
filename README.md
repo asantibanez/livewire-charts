@@ -5,6 +5,7 @@
 ## Preview
 
 ![preview](https://github.com/asantibanez/livewire-charts/raw/master/preview.gif)
+![preview](./preview_radarchart.gif)
 
 ## Demo
 
