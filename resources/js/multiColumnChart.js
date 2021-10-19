@@ -24,6 +24,9 @@ const multiColumnChart = () => {
             const columnWidth = component.get('columnChartModel.columnWidth');
             const horizontal = component.get('columnChartModel.horizontal');
             const config = component.get('columnChartModel.config');
+            const format_x = component.get('columnChartModel.format-x');
+            const format_y = component.get('columnChartModel.format-y');
+            const format_lable = component.get('columnChartModel.format-lable');
 
             const data = component.get('columnChartModel.data');
             const series = Object.keys(data)
@@ -90,12 +93,42 @@ const multiColumnChart = () => {
                 fill: {
                     opacity: component.get('columnChartModel.opacity'),
                 },
+
+                tooltip: {
+                    y: {
+                        formatter: function(value, s) {
+                            return component.get('columnChartModel.data')[series[s.seriesIndex].name][s.dataPointIndex].extras.formatted || value;
+                        }
+                    }
+                }
             };
 
             const colors = component.get('columnChartModel.colors');
 
             if (colors && colors.length > 0) {
                 options['colors'] = colors
+            }
+
+            if(format_x) {
+                options['xaxis']['labels'] = {
+                    formatter: function (value) {
+                        return number_format(value);
+                    }
+                }
+            }
+
+            if(format_y) {
+                options['yaxis']['labels'] = {
+                    formatter: function (value) {
+                        return number_format(value);
+                    }
+                }
+            }
+
+            if(format_lable) {
+                options['dataLabels']['formatter'] = function (value, opts) {
+                    return number_format(value);
+                }
             }
 
             this.chart = new ApexCharts(this.$refs.container, options);

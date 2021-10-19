@@ -25,6 +25,10 @@ class ColumnChartModel extends BaseChartModel
 
     public $data;
 
+    public $formatNumberX;
+    public $formatNumberY;
+    public $formatLableData;
+
     public function __construct()
     {
         parent::__construct();
@@ -42,6 +46,37 @@ class ColumnChartModel extends BaseChartModel
         $this->isStacked = false;
 
         $this->data = collect();
+
+        $this->formatNumberX = false;
+        $this->formatNumberY = false;
+        $this->formatLableData = false;
+    }
+
+    public function formatNumberX($value = false)
+    {
+        $this->formatNumberX = $value;
+
+        $this->data = collect();
+
+        return $this;
+    }
+
+    public function formatNumberY($value = false)
+    {
+        $this->formatNumberY = $value;
+
+        $this->data = collect();
+
+        return $this;
+    }
+
+    public function formatDataLable($value = false)
+    {
+        $this->formatLableData = $value;
+
+        $this->data = collect();
+
+        return $this;
     }
 
     public function multiColumn()
@@ -132,6 +167,9 @@ class ColumnChartModel extends BaseChartModel
             'isStacked' => $this->isStacked,
             'data' => $this->data->toArray(),
             'config' => config('livewire-charts'),
+            'format-x' => $this->formatNumberX,
+            'format-y' => $this->formatNumberY,
+            'format-lable'  => $this->formatLableData
         ]);
     }
 
@@ -152,5 +190,9 @@ class ColumnChartModel extends BaseChartModel
         $this->isStacked = data_get($array, 'isStacked', false);
 
         $this->data = collect(data_get($array, 'data', []));
+
+        $this->formatNumberX = data_get($array, 'format-x', false);
+        $this->formatNumberY = data_get($array, 'format-y', false);
+        $this->formatNumberY = data_get($array, 'format-lable', false);
     }
 }
