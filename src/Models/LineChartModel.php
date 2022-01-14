@@ -73,7 +73,6 @@ class LineChartModel extends BaseChartModel
     public function addSeriesPoint($seriesName, $title, $value, $extras = [])
     {
         $series = $this->data->get($seriesName, collect());
-
         $series->push([
             'seriesName' => $seriesName,
             'title' => $title,
