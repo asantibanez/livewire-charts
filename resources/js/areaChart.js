@@ -21,19 +21,25 @@ const areaChart = () => {
             const data = component.get('areaChartModel.data');
             const sparkline = component.get('areaChartModel.sparkline');
 
+            const series = Object.keys(data).map(key => {
+                return {
+                    name: key,
+                    data: data[key].map(item => item.value),
+                }
+            })
+
             const categories = component.get('areaChartModel.xAxis.categories').length > 0
                 ? component.get('areaChartModel.xAxis.categories')
-                : data.map(item => item.title)
-            ;
+                : data[series[0].name].map(item => item.title)
 
             var options = {
-                series: [{
-                    name: title,
-                    data: data.map(item => item.value)
-                }],
+                series: series,
+
                 chart: {
                     type: 'area',
                     height: '100%',
+
+                    stacked: component.get('areaChartModel.stacked') || false,
 
                     ...sparkline,
 
@@ -57,7 +63,7 @@ const areaChart = () => {
 
                 dataLabels: dataLabels,
 
-                colors: [component.get('areaChartModel.color') || '#2E93fA'],
+                colors: component.get('areaChartModel.colors') || ['#2E93fA'],
 
                 stroke: component.get('areaChartModel.stroke') || {},
 
@@ -66,7 +72,7 @@ const areaChart = () => {
                     align: 'center'
                 },
 
-                labels: data.map(item => item.title),
+                labels: data[series[0].name].map(item => item.title),
 
                 xaxis: {
                     labels: component.get('areaChartModel.xAxis.labels'),
