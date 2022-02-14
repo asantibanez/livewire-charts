@@ -9,6 +9,7 @@ use Asantibanez\LivewireCharts\Models\ColumnChartModel;
 use Asantibanez\LivewireCharts\Models\LineChartModel;
 use Asantibanez\LivewireCharts\Models\PieChartModel;
 use Asantibanez\LivewireCharts\Models\RadarChartModel;
+use Asantibanez\LivewireCharts\Models\TreeMapChartModel;
 
 class LivewireCharts
 {
@@ -49,5 +50,10 @@ class LivewireCharts
     public function radarChartModel()
     {
         return new RadarChartModel();
+    }
+
+    public function treeMapChartModel()
+    {
+        return new TreeMapChartModel();
     }
 }
