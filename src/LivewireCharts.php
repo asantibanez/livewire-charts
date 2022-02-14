@@ -8,6 +8,7 @@ use Asantibanez\LivewireCharts\Models\AreaChartModel;
 use Asantibanez\LivewireCharts\Models\ColumnChartModel;
 use Asantibanez\LivewireCharts\Models\LineChartModel;
 use Asantibanez\LivewireCharts\Models\PieChartModel;
+use Asantibanez\LivewireCharts\Models\RadarChartModel;
 
 class LivewireCharts
 {
@@ -43,5 +44,10 @@ class LivewireCharts
     public function pieChartModel()
     {
         return new PieChartModel;
+    }
+
+    public function radarChartModel()
+    {
+        return new RadarChartModel();
     }
 }
