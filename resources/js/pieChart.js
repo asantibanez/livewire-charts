@@ -20,13 +20,14 @@ const pieChart = () => {
             const onSliceClickEventName = component.get('pieChartModel.onSliceClickEventName')
             const data = component.get('pieChartModel.data')
             const sparkline = component.get('pieChartModel.sparkline')
+            const type = component.get('pieChartModel.type')
 
             const options = {
                 series: data.map(item => item.value),
 
                 chart: {
                     height: '100%',
-                    type: 'pie',
+                    type: type,
 
                     ...sparkline,
 
