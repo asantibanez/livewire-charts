@@ -15,6 +15,8 @@ class ColumnChartModel extends BaseChartModel
 
     public $columnWidth;
 
+    public $dataLabelsPosition;
+
     public $horizontal;
 
     public $isMultiColumn;
@@ -34,6 +36,8 @@ class ColumnChartModel extends BaseChartModel
         $this->opacity = 0.75;
 
         $this->columnWidth = 70;
+
+        $this->dataLabelsPosition = 'center';
 
         $this->horizontal = false;
 
@@ -61,6 +65,13 @@ class ColumnChartModel extends BaseChartModel
     public function stacked()
     {
         $this->isStacked = true;
+
+        return $this;
+    }
+
+    public function setDataLabelsPosition($value)
+    {
+        $this->dataLabelsPosition = $value;
 
         return $this;
     }
@@ -126,6 +137,7 @@ class ColumnChartModel extends BaseChartModel
         return array_merge(parent::toArray(), [
             'onColumnClickEventName' => $this->onColumnClickEventName,
             'opacity' => $this->opacity,
+            'dataLabelsPosition' => $this->dataLabelsPosition,
             'horizontal' => $this->horizontal,
             'columnWidth' => $this->columnWidth,
             'isMultiColumn' => $this->isMultiColumn,
@@ -143,6 +155,8 @@ class ColumnChartModel extends BaseChartModel
         $this->opacity = data_get($array, 'opacity', 0.5);
 
         $this->columnWidth = data_get($array, 'columnWidth', 70);
+
+        $this->dataLabelsPosition = data_get($array, 'dataLabelsPosition', 'center');
 
         $this->horizontal = data_get($array, 'horizontal', false);
 

@@ -29,6 +29,20 @@ trait HasDataLabels
         return $this;
     }
 
+    public function setDataLabelsOffsetY($offsetY)
+    {
+        data_set($this->dataLabels, 'offsetY', $offsetY);
+
+        return $this;
+    }
+
+    public function setDataLabelsStyleColors($colors)
+    {
+        data_set($this->dataLabels, 'style.colors', $colors);
+
+        return $this;
+    }
+
     protected function initDataLabels()
     {
         $this->dataLabels = $this->defaultDataLabels();
@@ -38,6 +52,10 @@ trait HasDataLabels
     {
         return [
             'enabled' => false,
+            'offsetY' => 0,
+            'style' => [
+                'colors' => ['#ffffff'],
+            ],
         ];
     }
 

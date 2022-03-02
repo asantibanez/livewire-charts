@@ -175,10 +175,13 @@ for each type of chart.
 | setDataLabelsEnabled(boolean $enabled) | Enables/disables data labels |
 | withDataLabels() | Enables data labels |
 | withoutDataLabels() | Disables data labels |
+| setDataLabelsOffsetY(int $offsetY) | Sets the top offset for data labels |
+| setDataLabelsStyleColors(array $colors) | Set colors for data lables |
 | withLegend() | Shows legends |
 | withoutLegend() | Hides legends |
 | setColors(array $colors) | Set colors for chart |
 | addColors(string $color) | Append $color to $colors set |
+| setXAxisLabelAngle(int $angle) | Rotate angle for chart X Axis labels |
 | setXAxisCategories(array $categories) | Enables custom categories for chart X Axis |
 | sparklined() | Enables Apex Charts sparkline feature |
 | setSparklineEnabled(boolean $isEnabled) | Enables/Disables Apex Charts sparkline feature |
@@ -200,6 +203,7 @@ for each type of chart.
 |--------|-------------|
 | setOpacity(int $opacity) | Sets columns' opacity |
 | setColumnWidth(int $columnWidth) | Sets columns' width |
+| setDataLabelsPosition(string $value) | Sets position of data lables (top|center|bottom) |
 | setHorizontal(boolean $value) | Sets columns or bars |
 | multiColumn() | Sets chart to display multiple column series |
 | singleColumn() | Sets chart to display a single column series |

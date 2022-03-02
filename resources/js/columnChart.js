@@ -22,6 +22,7 @@ const columnChart = () => {
             const grid = component.get('columnChartModel.grid');
             const columnWidth = component.get('columnChartModel.columnWidth');
             const horizontal = component.get('columnChartModel.horizontal');
+            const xAxis = component.get('columnChartModel.xAxis');
 
             const data = component.get('columnChartModel.data');
             const series = [{ data: data.map(item => item.value)}]
@@ -66,6 +67,9 @@ const columnChart = () => {
 
                 plotOptions: {
                     bar: {
+                        dataLabels: {
+                            position: component.get('columnChartModel.dataLabelsPosition'),
+                        },
                         horizontal: horizontal,
                         columnWidth: `${columnWidth}%`,
                         distributed: true,
@@ -75,6 +79,9 @@ const columnChart = () => {
                 dataLabels: dataLabels,
 
                 xaxis: {
+                    labels: {
+                        rotate: xAxis.labels.rotate,
+                    },
                     categories: data.map(item => item.title),
                 },
 
