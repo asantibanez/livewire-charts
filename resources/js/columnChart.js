@@ -75,6 +75,9 @@ const columnChart = () => {
                 dataLabels: dataLabels,
 
                 xaxis: {
+                    labels: {
+                        rotate: component.get('columnChartModel.xAxis.labels.rotate'),
+                    },
                     categories: data.map(item => item.title),
                 },
 

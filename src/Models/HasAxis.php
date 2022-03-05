@@ -22,6 +22,7 @@ trait HasAxis
             'categories' => [],
             'labels' => [
                 'show' => true,
+                'rotate' => -45,
             ],
         ];
     }
@@ -36,6 +37,13 @@ trait HasAxis
     public function setXAxisVisible($visible)
     {
         data_set($this->xAxis, 'labels.show', $visible);
+
+        return $this;
+    }
+
+    public function setXAxisLabelAngle($angle)
+    {
+        data_set($this->xAxis, 'labels.rotate', $angle);
 
         return $this;
     }

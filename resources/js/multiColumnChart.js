@@ -76,6 +76,9 @@ const multiColumnChart = () => {
                 dataLabels: dataLabels,
 
                 xaxis: {
+                    labels: {
+                        rotate: component.get('columnChartModel.xAxis.labels.rotate'),
+                    },
                     categories: categories,
                 },
 

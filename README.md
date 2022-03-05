@@ -179,6 +179,7 @@ for each type of chart.
 | withoutLegend() | Hides legends |
 | setColors(array $colors) | Set colors for chart |
 | addColors(string $color) | Append $color to $colors set |
+| setXAxisLabelAngle(int $angle) | Rotate angle for chart X Axis labels |
 | setXAxisCategories(array $categories) | Enables custom categories for chart X Axis |
 | sparklined() | Enables Apex Charts sparkline feature |
 | setSparklineEnabled(boolean $isEnabled) | Enables/Disables Apex Charts sparkline feature |
