@@ -33,7 +33,7 @@ const multiColumnChart = () => {
 
             const categories = component.get('columnChartModel.xAxis.categories').length > 0
                 ? component.get('columnChartModel.xAxis.categories')
-                : []
+                : data[series[0].name].map(item => item.title)
             ;
 
             const options = {
