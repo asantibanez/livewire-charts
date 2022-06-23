@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Asantibanez\LivewireCharts\Models;
 
 /**

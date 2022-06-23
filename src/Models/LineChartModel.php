@@ -1,9 +1,6 @@
 <?php
 
-
 namespace Asantibanez\LivewireCharts\Models;
-
-use Illuminate\Support\Collection;
 
 /**
  * Class LineChartModel
@@ -85,12 +82,14 @@ class LineChartModel extends BaseChartModel
         return $this;
     }
 
-    public function addMarker($title,
-                              $value,
-                              $strokeColor = 'green',
-                              $text = '',
-                              $textColor = '#ffffff',
-                              $textBackgroundColor = '#cccccc')
+    public function addMarker(
+        $title,
+        $value,
+        $strokeColor = 'green',
+        $text = '',
+        $textColor = '#ffffff',
+        $textBackgroundColor = '#cccccc'
+    )
     {
         $this->markers->push([
             'title' => $title,

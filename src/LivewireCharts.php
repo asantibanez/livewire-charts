@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Asantibanez\LivewireCharts;
-
 
 use Asantibanez\LivewireCharts\Models\AreaChartModel;
 use Asantibanez\LivewireCharts\Models\ColumnChartModel;
@@ -13,35 +11,35 @@ class LivewireCharts
 {
     public function lineChartModel()
     {
-        return (new LineChartModel)
+        return (new LineChartModel())
             ->singleLine();
     }
 
     public function multiLineChartModel()
     {
-        return (new LineChartModel)
+        return (new LineChartModel())
             ->multiLine();
     }
 
     public function columnChartModel()
     {
-        return (new ColumnChartModel)
+        return (new ColumnChartModel())
             ->singleColumn();
     }
 
     public function multiColumnChartModel()
     {
-        return (new ColumnChartModel)
+        return (new ColumnChartModel())
             ->multiColumn();
     }
 
     public function areaChartModel()
     {
-        return new AreaChartModel;
+        return new AreaChartModel();
     }
 
     public function pieChartModel()
     {
-        return new PieChartModel;
+        return new PieChartModel();
     }
 }

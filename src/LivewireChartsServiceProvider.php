@@ -27,7 +27,8 @@ class LivewireChartsServiceProvider extends ServiceProvider
     {
         $this->app->bind('livewirecharts', LivewireCharts::class);
         $this->mergeConfigFrom(
-            __DIR__.'/../config/livewire-charts.php', 'livewire-charts'
+            __DIR__.'/../config/livewire-charts.php',
+            'livewire-charts'
         );
     }
 

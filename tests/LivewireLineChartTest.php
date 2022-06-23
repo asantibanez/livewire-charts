@@ -8,7 +8,7 @@ use Livewire\Testing\TestableLivewire;
 
 class LivewireLineChartTest extends TestCase
 {
-    private function buildComponent() : TestableLivewire
+    private function buildComponent(): TestableLivewire
     {
         return Livewire::test(LivewireLineChart::class);
     }

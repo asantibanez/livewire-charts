@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Asantibanez\LivewireCharts\Models;
-
 
 trait HasAxis
 {
