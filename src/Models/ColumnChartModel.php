@@ -17,6 +17,8 @@ class ColumnChartModel extends BaseChartModel
 
     public $horizontal;
 
+    public $numberFormat;
+
     public $isMultiColumn;
 
     public $isStacked;
@@ -36,6 +38,8 @@ class ColumnChartModel extends BaseChartModel
         $this->columnWidth = 70;
 
         $this->horizontal = false;
+
+        $this->numberFormat = 'number';
 
         $this->isMultiColumn = false;
 
@@ -68,6 +72,13 @@ class ColumnChartModel extends BaseChartModel
     public function setHorizontal($value)
     {
         $this->horizontal = $value;
+
+        return $this;
+    }
+
+    public function setNumberFormat($value)
+    {
+        $this->numberFormat = $value;
 
         return $this;
     }
@@ -127,6 +138,7 @@ class ColumnChartModel extends BaseChartModel
             'onColumnClickEventName' => $this->onColumnClickEventName,
             'opacity' => $this->opacity,
             'horizontal' => $this->horizontal,
+            'numberFormat' => $this->numberFormat,
             'columnWidth' => $this->columnWidth,
             'isMultiColumn' => $this->isMultiColumn,
             'isStacked' => $this->isStacked,
@@ -140,16 +152,20 @@ class ColumnChartModel extends BaseChartModel
 
         $this->onColumnClickEventName = data_get($array, 'onColumnClickEventName', null);
 
-        $this->opacity = data_get($array, 'opacity', 0.5);
+        $this->opacity = data_get($array, 'opacity', 0.75);
 
         $this->columnWidth = data_get($array, 'columnWidth', 70);
 
         $this->horizontal = data_get($array, 'horizontal', false);
+
+        $this->numberFormat = data_get($array, 'numberFormat', 'number');
 
         $this->isMultiColumn = data_get($array, 'isMultiColumn', false);
 
         $this->isStacked = data_get($array, 'isStacked', false);
 
         $this->data = collect(data_get($array, 'data', []));
+
+        return $this;
     }
 }

@@ -14,13 +14,21 @@ const treeMapChart = () => {
                 this.chart.destroy()
             }
 
-            const title = component.get('treeMapChartModel.title');
-            const animated = component.get('treeMapChartModel.animated');
-            const distributed = component.get('treeMapChartModel.distributed');
-            const onBlockClickEventName = component.get('treeMapChartModel.onBlockClickEventName');
+            const jsonOptions = component.get('treeMapChartModel.jsonOptions') || '{}';
+
+            const options = JSON.parse(jsonOptions);
+
+            this.applyFixedOptions(options, component);
+            this.applyFluentOptions(options, component);
+            this.applyEvents(options, component);
+            this.applyNumberFormatting(options, component);
+
+            this.chart = new ApexCharts(this.$refs.container, options);
+            this.chart.render();
+        },
+
+        applyFixedOptions(options, component) {
             const data = component.get('treeMapChartModel.data');
-            const colors = component.get('treeMapChartModel.colors');
-            const enableShades = component.get('treeMapChartModel.enableShades');
 
             const series = Object.keys(data)
                 .map(seriesName => ({
@@ -29,48 +37,83 @@ const treeMapChart = () => {
                         x: item.title,
                         y: item.value,
                     }))
-                }))
+                }));
 
-            const options = {
-                series: series,
+            nestedProperty.set(options, 'chart.type', 'treemap');
+            nestedProperty.set(options, 'chart.height', '100%');
+            nestedProperty.set(options, 'chart.toolbar.show', false);
+            nestedProperty.set(options, 'legend.show', false);
 
-                legend: { show: false },
+            nestedProperty.set(options, 'series', series);
+        },
 
-                title: { text: title },
+        applyFluentOptions(options, component) {
+            const animated = component.get('treeMapChartModel.animated');
+            const colors = component.get('treeMapChartModel.colors');
+            const distributed = component.get('treeMapChartModel.distributed');
+            const enableShades = component.get('treeMapChartModel.enableShades');
+            const title = component.get('treeMapChartModel.title');
 
-                chart: {
-                    height: '100%',
-                    type: 'treemap',
+            if (! nestedProperty.has(options, 'chart.animations')) {
+                nestedProperty.set(options, 'chart.animations.enabled', animated);
+            }
 
-                    toolbar: {show: false},
+            if (! nestedProperty.has(options, 'colors')) {
+                nestedProperty.set(options, 'colors', colors);
+            }
 
-                    animations: {enabled: animated},
+            if (! nestedProperty.has(options, 'plotOptions.treemap.distributed')) {
+                nestedProperty.set(options, 'plotOptions.treemap.distributed', distributed);
+            }
 
-                    events: {
-                        click: function(event, chartContext, {seriesIndex, dataPointIndex}) {
-                            if (!onBlockClickEventName) {
-                                return
-                            }
+            if (! nestedProperty.has(options, 'plotOptions.treemap.enableShades')) {
+                nestedProperty.set(options, 'plotOptions.treemap.enableShades', enableShades);
+            }
 
-                            const block = data[series[seriesIndex].name][dataPointIndex]
+            if (! nestedProperty.has(options, 'title.text')) {
+                nestedProperty.set(options, 'title.text', title);
+            }
+        },
 
-                            component.emit(onBlockClickEventName, block)
-                        },
+        applyEvents(options, component) {
+            const onBlockClickEventName = component.get('treeMapChartModel.onBlockClickEventName');
+            const data = component.get('treeMapChartModel.data');
+            const series = Object.keys(data)
+                .map(seriesName => ({
+                    name: seriesName,
+                    data: data[seriesName].map(item => ({
+                        x: item.title,
+                        y: item.value,
+                    }))
+                }));
+
+            const events = {
+                click: function(event, chartContext, {seriesIndex, dataPointIndex}) {
+                    if (! onBlockClickEventName) {
+                        return
                     }
-                },
 
-                plotOptions: {
-                    treemap: {
-                        distributed: distributed,
-                        enableShades: enableShades,
-                    }
-                },
+                    const block = data[series[seriesIndex].name][dataPointIndex]
 
-                colors: colors,
+                    component.emit(onBlockClickEventName, block)
+                },
             };
 
-            this.chart = new ApexCharts(this.$refs.container, options);
-            this.chart.render();
+            nestedProperty.set(options, 'chart.events', events);
+        },
+
+        applyNumberFormatting(options, component) {
+            const numberFormat = component.get('treeMapChartModel.numberFormat');
+
+            const formats = new Map();
+            formats.set('number', value => value.toLocaleString());
+            formats.set('dollar', value => "$" + value.toLocaleString());
+            formats.set('percentage', value => value.toLocaleString() + "%");
+
+            // Apply formatting...
+            nestedProperty.set(options, 'yaxis.labels.formatter', function (value) {
+                return formats.get(numberFormat)(value);
+            });
         }
     }
 }

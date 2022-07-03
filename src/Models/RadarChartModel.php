@@ -13,6 +13,8 @@ class RadarChartModel extends BaseChartModel
 {
     public $opacity;
 
+    public $numberFormat;
+
     public $colors;
 
     public $onPointClickEventName;
@@ -27,9 +29,18 @@ class RadarChartModel extends BaseChartModel
 
         $this->opacity = 0.5;
 
+        $this->numberFormat = 'number';
+
         $this->colors = ['#2E93fA', '#66DA26', '#546E7A', '#E91E63', '#FF9800'];
 
         $this->data = collect();
+    }
+
+    public function setNumberFormat($value)
+    {
+        $this->numberFormat = $value;
+
+        return $this;
     }
 
     public function setColors($colors)
@@ -75,6 +86,7 @@ class RadarChartModel extends BaseChartModel
         return array_merge(parent::toArray(), [
             'onPointClickEventName' => $this->onPointClickEventName,
             'opacity' => $this->opacity,
+            'numberFormat' => $this->numberFormat,
             'colors' => $this->colors,
             'data' => $this->data->toArray(),
         ]);
@@ -88,8 +100,12 @@ class RadarChartModel extends BaseChartModel
 
         $this->opacity = data_get($array, 'opacity', 0.5);
 
+        $this->numberFormat = data_get($array, 'numberFormat', 'number');
+
         $this->colors = data_get($array, 'color', '#90cdf4');
 
         $this->data = collect(data_get($array, 'data', []));
+
+        return $this;
     }
 }

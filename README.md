@@ -177,11 +177,14 @@ for each type of chart.
 | withoutDataLabels() | Disables data labels |
 | withLegend() | Shows legends |
 | withoutLegend() | Hides legends |
+| setNumberFormat() | Choose the number format for data lables and y-axis ('number', 'dollar', 'percentage') |
 | setColors(array $colors) | Set colors for chart |
 | addColors(string $color) | Append $color to $colors set |
 | setXAxisCategories(array $categories) | Enables custom categories for chart X Axis |
 | sparklined() | Enables Apex Charts sparkline feature |
 | setSparklineEnabled(boolean $isEnabled) | Enables/Disables Apex Charts sparkline feature |
+| stylesFromJson(string $json) | Apply styles from given Json object |
+| stylesFromFile(string $filepath) | Apply styles from given Json file |
 
 ### LivewireLineChart
 

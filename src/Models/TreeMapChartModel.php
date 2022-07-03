@@ -14,6 +14,7 @@ class TreeMapChartModel extends BaseChartModel
 
     public $data;
     public $distributed;
+    public $numberFormat;
     public $onBlockClickEventName;
 
     public function __construct()
@@ -24,12 +25,21 @@ class TreeMapChartModel extends BaseChartModel
 
         $this->distributed = false;
 
+        $this->numberFormat = 'number';
+
         $this->setColors(['#2E93fA']);
     }
 
     public function setDistributed($distributed)
     {
         $this->distributed = $distributed;
+
+        return $this;
+    }
+
+    public function setNumberFormat($value)
+    {
+        $this->numberFormat = $value;
 
         return $this;
     }
@@ -67,6 +77,7 @@ class TreeMapChartModel extends BaseChartModel
         return array_merge(parent::toArray(), [
             'data' => $this->data->toArray(),
             'distributed' => $this->distributed,
+            'numberFormat' => $this->numberFormat,
             'onBlockClickEventName' => $this->onBlockClickEventName,
         ]);
     }
@@ -79,6 +90,10 @@ class TreeMapChartModel extends BaseChartModel
 
         $this->distributed = data_get($array, 'distributed', false);
 
+        $this->numberFormat = data_get($array, 'numberFormat', 'number');
+
         $this->onBlockClickEventName = data_get($array, 'onBlockClickEventName', null);
+
+        return $this;
     }
 }

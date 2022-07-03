@@ -17,3 +17,5 @@ window.livewireChartsPieChart = pieChart
 window.livewireChartsMultiColumnChart = multiColumnChart
 window.livewireChartsRadarChart = radarChart
 window.livewireChartsTreeMapChart = treeMapChart
+
+window.nestedProperty = require("nested-property");

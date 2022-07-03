@@ -18,6 +18,8 @@ class LineChartModel extends BaseChartModel
 
     public $markers;
 
+    public $numberFormat;
+
     public $onPointClickEventName;
 
     public function __construct()
@@ -27,6 +29,8 @@ class LineChartModel extends BaseChartModel
         $this->isMultiLine = false;
 
         $this->onPointClickEventName = null;
+
+        $this->numberFormat = 'number';
 
         $this->data = collect();
 
@@ -47,6 +51,13 @@ class LineChartModel extends BaseChartModel
         $this->isMultiLine = false;
 
         $this->data = collect();
+
+        return $this;
+    }
+
+    public function setNumberFormat($value)
+    {
+        $this->numberFormat = $value;
 
         return $this;
     }
@@ -108,6 +119,7 @@ class LineChartModel extends BaseChartModel
     {
         return array_merge(parent::toArray(), [
             'isMultiLine' => $this->isMultiLine,
+            'numberFormat' => $this->numberFormat,
             'onPointClickEventName' => $this->onPointClickEventName,
             'data' => $this->data->toArray(),
             'markers' => $this->markers->toArray(),
@@ -120,10 +132,14 @@ class LineChartModel extends BaseChartModel
 
         $this->isMultiLine = data_get($array, 'isMultiLine', false);
 
+        $this->numberFormat = data_get($array, 'numberFormat', 'number');
+
         $this->onPointClickEventName = data_get($array, 'onPointClickEventName', null);
 
         $this->data = collect(data_get($array, 'data', []));
 
         $this->markers = collect(data_get($array, 'markers', []));
+
+        return $this;
     }
 }

@@ -10,7 +10,7 @@ trait HasSparkline
 
     public function setSparklineEnabled($isEnabled)
     {
-        data_set($this->sparkline, 'sparkline.enabled', $isEnabled);
+        $this->sparkline = $isEnabled;
 
         return $this;
     }
@@ -27,11 +27,7 @@ trait HasSparkline
 
     private function defaultSparkline()
     {
-        return [
-            'sparkline' => [
-                'enabled' => false,
-            ],
-        ];
+        return false;
     }
 
     protected function sparklineFromArray($array)

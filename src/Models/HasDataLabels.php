@@ -10,21 +10,21 @@ trait HasDataLabels
 
     public function setDataLabelsEnabled($enabled)
     {
-        data_set($this->dataLabels, 'enabled', $enabled);
+        $this->dataLabels = $enabled;
 
         return $this;
     }
 
     public function withDataLabels()
     {
-        data_set($this->dataLabels, 'enabled', true);
+        $this->dataLabels = true;
 
         return $this;
     }
 
     public function withoutDataLabels()
     {
-        data_set($this->dataLabels, 'enabled', false);
+        $this->dataLabels = false;
 
         return $this;
     }
@@ -36,9 +36,7 @@ trait HasDataLabels
 
     private function defaultDataLabels()
     {
-        return [
-            'enabled' => false,
-        ];
+        return false;
     }
 
     protected function dataLabelsFromArray($array)

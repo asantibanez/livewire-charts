@@ -15,6 +15,8 @@ class PieChartModel extends BaseChartModel
 
     public $type;
 
+    public $numberFormat;
+
     public $data;
 
     public function __construct()
@@ -26,6 +28,8 @@ class PieChartModel extends BaseChartModel
         $this->opacity = 0.75;
 
         $this->type = 'pie';
+
+        $this->numberFormat = 'number';
 
         $this->data = collect();
     }
@@ -40,6 +44,13 @@ class PieChartModel extends BaseChartModel
     public function setType($type)
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function setNumberFormat($value)
+    {
+        $this->numberFormat = $value;
 
         return $this;
     }
@@ -69,6 +80,7 @@ class PieChartModel extends BaseChartModel
             'onSliceClickEventName' => $this->onSliceClickEventName,
             'opacity' => $this->opacity,
             'type' => $this->type,
+            'numberFormat' => $this->numberFormat,
             'data' => $this->data->toArray(),
         ]);
     }
@@ -83,6 +95,10 @@ class PieChartModel extends BaseChartModel
 
         $this->type = data_get($array, 'type', 'pie');
 
+        $this->numberFormat = data_get($array, 'numberFormat', 'number');
+
         $this->data = collect(data_get($array, 'data', []));
+
+        return $this;
     }
 }

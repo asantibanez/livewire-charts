@@ -11,6 +11,8 @@ class AreaChartModel extends BaseChartModel
 {
     public $color;
 
+    public $numberFormat;
+
     public $data;
 
     public $onPointClickEventName;
@@ -21,6 +23,8 @@ class AreaChartModel extends BaseChartModel
 
         $this->color = '#90cdf4';
 
+        $this->numberFormat = 'number';
+
         $this->onPointClickEventName = null;
 
         $this->data = collect();
@@ -29,6 +33,13 @@ class AreaChartModel extends BaseChartModel
     public function setColor($color)
     {
         $this->color = $color;
+
+        return $this;
+    }
+
+    public function setNumberFormat($value)
+    {
+        $this->numberFormat = $value;
 
         return $this;
     }
@@ -55,6 +66,7 @@ class AreaChartModel extends BaseChartModel
     {
         return array_merge(parent::toArray(), [
             'color' => $this->color,
+            'numberFormat' => $this->numberFormat,
             'onPointClickEventName' => $this->onPointClickEventName,
             'data' => $this->data->toArray(),
         ]);
@@ -66,8 +78,12 @@ class AreaChartModel extends BaseChartModel
 
         $this->color = data_get($array, 'color', '#90cdf4');
 
+        $this->numberFormat = data_get($array, 'numberFormat', 'number');
+
         $this->onPointClickEventName = data_get($array, 'onPointClickEventName', null);
 
         $this->data = collect(data_get($array, 'data', []));
+
+        return $this;
     }
 }
