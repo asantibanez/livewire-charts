@@ -89,8 +89,7 @@ class LineChartModel extends BaseChartModel
         $text = '',
         $textColor = '#ffffff',
         $textBackgroundColor = '#cccccc'
-    )
-    {
+    ) {
         $this->markers->push([
             'title' => $title,
             'value' => $value,
