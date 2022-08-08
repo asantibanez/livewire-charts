@@ -7,7 +7,6 @@ use Livewire\Component;
 
 /**
  * Class PieChart
- * @package Asantibanez\LivewireCharts\Charts
  */
 class LivewirePieChart extends Component
 {

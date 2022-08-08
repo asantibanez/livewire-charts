@@ -4,7 +4,6 @@ namespace Asantibanez\LivewireCharts\Models;
 
 /**
  * Class BaseChartModel
- * @package Asantibanez\LivewireCharts\Models
  */
 class BaseChartModel
 {

@@ -70,6 +70,7 @@ class LivewireChartsServiceProvider extends ServiceProvider
     {
         Blade::directive('livewireChartsScripts', function () {
             $scriptsUrl = asset('/vendor/livewire-charts/app.js');
+
             return <<<EOF
 <script src="$scriptsUrl"></script>
 EOF;

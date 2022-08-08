@@ -4,7 +4,6 @@ namespace Asantibanez\LivewireCharts\Models;
 
 /**
  * Class PieChartModel
- * @package Asantibanez\LivewireCharts\Models
  */
 class PieChartModel extends BaseChartModel
 {

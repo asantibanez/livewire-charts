@@ -4,9 +4,9 @@ namespace Asantibanez\LivewireCharts\Models;
 
 /**
  * Class ColumnChartModel
- * @package Asantibanez\LivewireCharts\Models
- * @property boolean $isMultiColumn
- * @property boolean $isStacked
+ *
+ * @property bool $isMultiColumn
+ * @property bool $isStacked
  */
 class ColumnChartModel extends BaseChartModel
 {
@@ -25,7 +25,9 @@ class ColumnChartModel extends BaseChartModel
     public $data;
 
     public $formatNumberX;
+
     public $formatNumberY;
+
     public $formatLableData;
 
     public function __construct()
@@ -168,7 +170,7 @@ class ColumnChartModel extends BaseChartModel
             'config' => config('livewire-charts'),
             'format-x' => $this->formatNumberX,
             'format-y' => $this->formatNumberY,
-            'format-lable'  => $this->formatLableData
+            'format-lable' => $this->formatLableData,
         ]);
     }
 

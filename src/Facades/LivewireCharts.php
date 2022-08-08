@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * Class LivewireCharts
- * @package Asantibanez\LivewireCharts\Facades
+ *
  * @method static LineChartModel lineChartModel()
  * @method static LineChartModel multiLineChartModel()
  * @method static ColumnChartModel columnChartModel()

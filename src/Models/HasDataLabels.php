@@ -16,6 +16,7 @@ trait HasDataLabels
     public function withDataLabels($option = [])
     {
         data_set($this->dataLabels, 'enabled', true);
+
         return $this;
     }
 

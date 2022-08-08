@@ -7,7 +7,6 @@ use Livewire\Component;
 
 /**
  * Class LivewireColumnChart
- * @package Asantibanez\LivewireCharts\Charts
  */
 class LivewireColumnChart extends Component
 {

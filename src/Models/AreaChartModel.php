@@ -4,7 +4,6 @@ namespace Asantibanez\LivewireCharts\Models;
 
 /**
  * Class AreaChartModel
- * @package Asantibanez\LivewireCharts\Models
  */
 class AreaChartModel extends BaseChartModel
 {

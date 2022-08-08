@@ -12,7 +12,7 @@ class TestCase extends BaseTestCase
     {
         return [
             LivewireServiceProvider::class,
-            LivewireChartsServiceProvider::class
+            LivewireChartsServiceProvider::class,
         ];
     }
 

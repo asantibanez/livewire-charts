@@ -4,8 +4,8 @@ namespace Asantibanez\LivewireCharts\Models;
 
 /**
  * Class LineChartModel
- * @package Asantibanez\LivewireCharts\Models
- * @property boolean $isMultiLine
+ *
+ * @property bool $isMultiLine
  */
 class LineChartModel extends BaseChartModel
 {
@@ -18,7 +18,9 @@ class LineChartModel extends BaseChartModel
     public $onPointClickEventName;
 
     public $formatNumberX;
+
     public $formatNumberY;
+
     public $formatLableData;
 
     public function __construct()
@@ -146,7 +148,7 @@ class LineChartModel extends BaseChartModel
             'config' => config('livewire-charts'),
             'format-x' => $this->formatNumberX,
             'format-y' => $this->formatNumberY,
-            'format-lable'  => $this->formatLableData
+            'format-lable' => $this->formatLableData,
         ]);
     }
 

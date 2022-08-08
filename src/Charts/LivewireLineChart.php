@@ -7,7 +7,6 @@ use Livewire\Component;
 
 /**
  * Class LivewireLineChart
- * @package Asantibanez\LivewireCharts\Charts
  */
 class LivewireLineChart extends Component
 {
