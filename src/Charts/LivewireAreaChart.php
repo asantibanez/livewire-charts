@@ -10,6 +10,7 @@ use Livewire\Component;
  */
 class LivewireAreaChart extends Component
 {
+
     public $areaChartModel;
 
     public function mount(AreaChartModel $areaChartModel)
