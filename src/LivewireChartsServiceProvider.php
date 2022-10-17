@@ -6,6 +6,9 @@ use Asantibanez\LivewireCharts\Charts\LivewireAreaChart;
 use Asantibanez\LivewireCharts\Charts\LivewireColumnChart;
 use Asantibanez\LivewireCharts\Charts\LivewireLineChart;
 use Asantibanez\LivewireCharts\Charts\LivewirePieChart;
+use Asantibanez\LivewireCharts\Charts\LivewireRadarChart;
+use Asantibanez\LivewireCharts\Charts\LivewireTreeMapChart;
+use Asantibanez\LivewireCharts\Console\InstallCommand;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
@@ -14,7 +17,9 @@ class LivewireChartsServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-         $this->registerViews();
+        $this->registerCommands();
+
+        $this->registerViews();
 
         $this->registerPublishables();
 
@@ -27,6 +32,16 @@ class LivewireChartsServiceProvider extends ServiceProvider
     {
         $this->app->bind('livewirecharts', LivewireCharts::class);
     }
+
+    private function registerCommands()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                InstallCommand::class,
+            ]);
+        }
+    }
+
 
     private function registerViews()
     {
@@ -56,6 +71,8 @@ class LivewireChartsServiceProvider extends ServiceProvider
         Livewire::component('livewire-column-chart', LivewireColumnChart::class);
         Livewire::component('livewire-pie-chart', LivewirePieChart::class);
         Livewire::component('livewire-area-chart', LivewireAreaChart::class);
+        Livewire::component('livewire-radar-chart', LivewireRadarChart::class);
+        Livewire::component('livewire-tree-map-chart', LivewireTreeMapChart::class);
     }
 
     private function registerDirectives()

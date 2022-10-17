@@ -13,6 +13,8 @@ class PieChartModel extends BaseChartModel
 
     public $opacity;
 
+    public $type;
+
     public $data;
 
     public function __construct()
@@ -23,12 +25,21 @@ class PieChartModel extends BaseChartModel
 
         $this->opacity = 0.75;
 
+        $this->type = 'pie';
+
         $this->data = collect();
     }
 
     public function setOpacity($opacity)
     {
         $this->opacity = $opacity;
+
+        return $this;
+    }
+
+    public function setType($type)
+    {
+        $this->type = $type;
 
         return $this;
     }
@@ -57,6 +68,7 @@ class PieChartModel extends BaseChartModel
         return array_merge(parent::toArray(), [
             'onSliceClickEventName' => $this->onSliceClickEventName,
             'opacity' => $this->opacity,
+            'type' => $this->type,
             'data' => $this->data->toArray(),
         ]);
     }
@@ -68,6 +80,8 @@ class PieChartModel extends BaseChartModel
         $this->onSliceClickEventName = data_get($array, 'onSliceClickEventName', null);
 
         $this->opacity = data_get($array, 'opacity', 0.75);
+
+        $this->type = data_get($array, 'type', 'pie');
 
         $this->data = collect(data_get($array, 'data', []));
     }
