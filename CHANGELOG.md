@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.5.0 - 2023-02-01
+- Added tooltip override via `extras.tooltip`
+
 ## 2.4.2 - 2023-02-01
 - Fixed hover title on column chart
 

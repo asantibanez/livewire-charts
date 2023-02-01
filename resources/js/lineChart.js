@@ -100,7 +100,7 @@ const lineChart = () => {
                 tooltip: {
                     y: {
                         formatter: function(value, series) {
-                            return data[series.dataPointIndex].extras.formatted || value;
+                            return data[series.dataPointIndex].extras.tooltip || value;
                         }
                     }
                 },
