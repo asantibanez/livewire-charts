@@ -14,7 +14,7 @@ const columnChart = () => {
                 this.chart.destroy()
             }
 
-            const title = component.get('columnChartModel.title');
+            const title = component.get('columnChartModel.title')
             const animated = component.get('columnChartModel.animated') || false;
             const onColumnClickEventName = component.get('columnChartModel.onColumnClickEventName')
             const dataLabels = component.get('columnChartModel.dataLabels') || {};
@@ -84,7 +84,7 @@ const columnChart = () => {
 
                 yaxis: {
                     title: {
-                        text: component.get('columnChartModel.title'),
+                        text: title,
                     }
                 },
 
