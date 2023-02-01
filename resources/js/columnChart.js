@@ -91,6 +91,14 @@ const columnChart = () => {
                 fill: {
                     opacity: component.get('columnChartModel.opacity') || 0.5
                 },
+
+                tooltip: {
+                    y: {
+                        formatter: function(value, series) {
+                            return data[series.dataPointIndex].extras.formatted || value;
+                        }
+                    }
+                },
             };
 
             const colors = component.get('columnChartModel.colors');
