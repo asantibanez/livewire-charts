@@ -14,6 +14,7 @@ const columnChart = () => {
                 this.chart.destroy()
             }
 
+            const title = component.get('columnChartModel.title');
             const animated = component.get('columnChartModel.animated') || false;
             const onColumnClickEventName = component.get('columnChartModel.onColumnClickEventName')
             const dataLabels = component.get('columnChartModel.dataLabels') || {};
@@ -24,7 +25,10 @@ const columnChart = () => {
             const horizontal = component.get('columnChartModel.horizontal');
 
             const data = component.get('columnChartModel.data');
-            const series = [{ data: data.map(item => item.value)}]
+            const series = [{
+                name: title,
+                data: data.map(item => item.value)
+            }]
 
             const options = {
                 series: series,
