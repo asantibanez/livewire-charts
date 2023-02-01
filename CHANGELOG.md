@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.4.2 - 2023-02-01
+- Fixed hover title on column chart
+
 ## 2.4.1 - 2022-02-18
 - Fixed xAxis auto-categories for MultiColumnChart 
 
