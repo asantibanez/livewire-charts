@@ -5,6 +5,8 @@ import multiColumnChart from "./multiColumnChart";
 import lineChart from "./lineChart"
 import multiLineChart from "./multiLineChart"
 import pieChart from "./pieChart"
+import radarChart from "./radarChart"
+import treeMapChart from "./treeMapChart"
 
 window.ApexCharts = ApexCharts
 window.livewireChartsAreaChart = areaChart
@@ -13,3 +15,5 @@ window.livewireChartsLineChart = lineChart
 window.livewireChartsMultiLineChart = multiLineChart
 window.livewireChartsPieChart = pieChart
 window.livewireChartsMultiColumnChart = multiColumnChart
+window.livewireChartsRadarChart = radarChart
+window.livewireChartsTreeMapChart = treeMapChart

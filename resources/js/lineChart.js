@@ -102,10 +102,10 @@ const lineChart = () => {
                 tooltip: {
                     y: {
                         formatter: function(value, series) {
-                            return component.get('lineChartModel.data')[series.dataPointIndex].extras.formatted || value;
+                            return data[series.dataPointIndex].extras.tooltip || value;
                         }
                     }
-                }
+                },
             };
 
             this.chart = new ApexCharts(this.$refs.container, options);

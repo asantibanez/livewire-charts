@@ -1,5 +1,19 @@
 # Changelog
 
+## 2.5.0 - 2023-02-01
+- Added tooltip override via `extras.tooltip`
+
+## 2.4.2 - 2023-02-01
+- Fixed hover title on column chart
+
+## 2.4.1 - 2022-02-18
+- Fixed xAxis auto-categories for MultiColumnChart 
+
+## 2.4.0 - 2022-02-14
+- Added Radar Chart (thanks to @AlexHupe)
+- Added Tree Map Chart
+- Added "donut" type to Pie Chart (thanks to @nicko170)
+
 ## 2.3.0 - 2021-02-12
 - Added `init()` method for better boot and $wire hoisting
 - Added color customization for columns, multiline and pie chart

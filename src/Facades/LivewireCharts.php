@@ -6,6 +6,8 @@ use Asantibanez\LivewireCharts\Models\AreaChartModel;
 use Asantibanez\LivewireCharts\Models\ColumnChartModel;
 use Asantibanez\LivewireCharts\Models\LineChartModel;
 use Asantibanez\LivewireCharts\Models\PieChartModel;
+use Asantibanez\LivewireCharts\Models\RadarChartModel;
+use Asantibanez\LivewireCharts\Models\TreeMapChartModel;
 use Illuminate\Support\Facades\Facade;
 
 /**
@@ -17,6 +19,8 @@ use Illuminate\Support\Facades\Facade;
  * @method static ColumnChartModel multiColumnChartModel()
  * @method static AreaChartModel areaChartModel()
  * @method static PieChartModel pieChartModel()
+ * @method static RadarChartModel radarChartModel()
+ * @method static TreeMapChartModel treeMapChartModel()
  */
 class LivewireCharts extends Facade
 {

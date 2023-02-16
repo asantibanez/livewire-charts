@@ -5,6 +5,7 @@
 ## Preview
 
 ![preview](https://github.com/asantibanez/livewire-charts/raw/master/preview.gif)
+![preview](./preview_radarchart.gif)
 
 ## Demo
 
@@ -26,6 +27,8 @@ and export `livewire-charts:public`. This command will export a `vendor/livewire
 php artisan vendor:publish --tag=livewire-charts:public
 ```
 
+> Note: This last step can also be done using `livewire-charts:install` command in the artisan console.
+
 ## Requirements
 
 This package requires the following packages/libraries to work:
@@ -44,12 +47,16 @@ Livewire Charts supports out of the box the following types of charts
 - Pie Chart (`LivewirePieChart` component)
 - Column/Multi Line Chart (`LivewireColumnChart` component)
 - Area Chart (`LivewireAreaChart` component)
+- Radar Chart (`LivewireRadarChart` component)
+- Tree Map Chart (`LivewireTreeMapChart` component)
 
 Each one comes with its own "model" class that allows you to define the chart's data and render behavior. 
 - `LivewireLineChart` uses `LineChartModel` to set up data points, markers, events and other ui customizations. 
 - `LivewirePieChart` uses `PieChartModel` to set up data slices, events and other ui customizations. 
 - `LivewireColumnChart` uses `ColumnChartModel` to set up data columns, events and other ui customizations.
 - `LivewireAreaChart` uses `AreaChartModel` to set up data points, events and other ui customizations.
+- `LivewireRadarChart` uses `RadarChartModel` to set up data points, events and other ui customizations.
+- `LivewireTreeMapChart` uses `TreeMapChartModel` to set up data blocks, events and other ui customizations.
 
 For example, to render a column chart, we can create an instance of `ColumnChartModel` and add some data to it
 ```php
@@ -97,6 +104,8 @@ LivewireCharts::columnChartModel();
 LivewireCharts::multiColumnChartModel();
 LivewireCharts::pieChartModel();
 LivewireCharts::areaChartModel();
+LivewireCharts::radarChartModel();
+LivewireCharts::treeMapChartModel();
 ```
 
 ## Enabling Interactions
@@ -157,7 +166,7 @@ The parent component renders the charts as follows
 For each chart, a specific model class needs to be used. Here, it is detailed the api available
 for each type of chart.
 
-#### All
+### All
 
 | Method | Description |
 |--------|-------------|
@@ -174,7 +183,7 @@ for each type of chart.
 | sparklined() | Enables Apex Charts sparkline feature |
 | setSparklineEnabled(boolean $isEnabled) | Enables/Disables Apex Charts sparkline feature |
 
-#### LivewireLineChart
+### LivewireLineChart
 
 | Method | Description |
 |--------|-------------|
@@ -185,7 +194,7 @@ for each type of chart.
 | addMarker(string $title, double $value) | Adds a marker point to the line chart. Markers are used to emphasize particular points in the chart (singleLine only) |
 | withOnPointClickEvent(string $eventName) | Event Name that will be fired when a point/marker of the chart is clicked |
 
-#### LivewireColumnChart
+### LivewireColumnChart
 
 | Method | Description |
 |--------|-------------|
@@ -199,7 +208,7 @@ for each type of chart.
 | addSeriesColumn(string $seriesName, string $title, double $value, array $extras = []) | Adds a column to a multicolumn chart. `$extras` is forwarded on click event |
 | onColumnClickEventName(string $eventName) | Event Name that will be fired when a column of the chart is clicked |
 
-#### LivewirePieChart
+### LivewirePieChart
 
 | Method | Description |
 |--------|-------------|
@@ -207,7 +216,7 @@ for each type of chart.
 | addSlice(string $title, double $value, string $color, array $extras = []) | Adds a slice to the chart with the specified color. `$extras` is forwarded on click event |
 | withOnSliceClickEvent(string $eventName) | Event Name that will be fired when a column of the chart is clicked |
 
-#### LivewireAreaChart
+### LivewireAreaChart
 
 | Method | Description |
 |--------|-------------|
@@ -215,6 +224,23 @@ for each type of chart.
 | withOnPointClickEvent(string $eventName) | Event Name that will be fired when a point of the chart is clicked |
 | setXAxisVisible(boolean $visible) | Shows/hides xAxis labels |
 | setYAxisVisible(boolean $visible) | Shows/hides yAxis labels |
+
+### LivewireRadarChart
+
+| Method | Description |
+|--------|-------------|
+| addSeries(string $seriesName, string $title, double $value, array $extras = []) | |
+| withOnPointClickEvent(string $eventName) | Event Name that will be fired when a point of the chart is clicked |
+
+### LivewireTreeMapChart
+
+| Method | Description |
+|--------|-------------|
+| addBlock(string $title, double $value, array $extras = []) | Adds a block to the default series|
+| addSeriesBlock(string $seriesName, string $title, double $value, array $extras = []) | Adds a block to the specified series|
+| withOnBlockClickEvent(string $eventName) | Event Name that will be fired when a block of the chart is clicked |
+| setDistributed(bool $distributed) | Set whether the chart uses distribution or not |
+
 
 ## Advanced Usage - Integrating Scripts
 

@@ -1,3 +1,4 @@
+import { mergedOptionsWithJsonConfig } from './helpers'
 
 const columnChart = () => {
     return {
@@ -14,6 +15,7 @@ const columnChart = () => {
                 this.chart.destroy()
             }
 
+            const title = component.get('columnChartModel.title')
             const animated = component.get('columnChartModel.animated') || false;
             const onColumnClickEventName = component.get('columnChartModel.onColumnClickEventName');
             const dataLabels = component.get('columnChartModel.dataLabels') || {};
@@ -23,9 +25,13 @@ const columnChart = () => {
             const columnWidth = component.get('columnChartModel.columnWidth');
             const horizontal = component.get('columnChartModel.horizontal');
             const config = component.get('columnChartModel.config');
+            const jsonConfig = component.get('columnChartModel.jsonConfig');
 
             const data = component.get('columnChartModel.data');
-            const series = [{ data: data.map(item => item.value)}];
+            const series = [{
+                name: title,
+                data: data.map(item => item.value)
+            }]
 
             const options = {
                 series: series,
@@ -82,12 +88,20 @@ const columnChart = () => {
 
                 yaxis: {
                     title: {
-                        text: component.get('columnChartModel.title'),
+                        text: title,
                     }
                 },
 
                 fill: {
                     opacity: component.get('columnChartModel.opacity') || 0.5
+                },
+
+                tooltip: {
+                    y: {
+                        formatter: function(value, series) {
+                            return data[series.dataPointIndex].extras.tooltip || value;
+                        }
+                    }
                 },
             };
 
@@ -97,7 +111,7 @@ const columnChart = () => {
                 options['colors'] = colors
             }
 
-            this.chart = new ApexCharts(this.$refs.container, options);
+            this.chart = new ApexCharts(this.$refs.container, mergedOptionsWithJsonConfig(options, jsonConfig));
             this.chart.render();
         }
     }
