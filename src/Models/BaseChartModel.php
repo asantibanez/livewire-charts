@@ -19,6 +19,7 @@ class BaseChartModel
     use HasGrid;
     use HasColors;
     use HasTheme;
+    use HasJsonConfig;
 
     public function __construct()
     {
@@ -32,6 +33,7 @@ class BaseChartModel
         $this->initGrid();
         $this->initColors();
         $this->initTheme();
+        $this->initJsonConfig();
     }
 
     public function reactiveKey()
@@ -52,6 +54,7 @@ class BaseChartModel
             $this->gridToArray(),
             $this->colorsToArray(),
             $this->themeToArray()
+            $this->jsonConfigToArray()
         );
     }
 
@@ -67,5 +70,6 @@ class BaseChartModel
         $this->gridFromArray($array);
         $this->colorsFromArray($array);
         $this->themeFromArray($array);
+        $this->jsonConfigFromArray($array);
     }
 }

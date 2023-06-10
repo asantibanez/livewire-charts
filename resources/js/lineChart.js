@@ -98,6 +98,14 @@ const lineChart = () => {
                         }
                     )
                 },
+
+                tooltip: {
+                    y: {
+                        formatter: function(value, series) {
+                            return data[series.dataPointIndex].extras.tooltip || value;
+                        }
+                    }
+                },
             };
 
             this.chart = new ApexCharts(this.$refs.container, options);
