@@ -26,7 +26,7 @@ class LivewireColumnChart extends Component
             return;
         }
 
-        $this->emit($onColumnClickEventName, $column);
+        $this->dispatch($onColumnClickEventName, $column);
     }
 
     public function render()

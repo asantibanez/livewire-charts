@@ -22,4 +22,23 @@ class LivewireColumnChartTest extends TestCase
         //Assert
         $this->assertNotNull($component);
     }
+
+    /** @test */
+    public function should_emit_event_if_present()
+    {
+        //Arrange
+        $component = $this->buildComponent();
+
+        $columnChartModel = $component->columnChartModel;
+
+        data_set($columnChartModel, 'onColumnClickEventName', 'custom-event');
+
+        $component->set('columnChartModel', $columnChartModel);
+
+        //Act
+        $component->runAction('onColumnClick', []);
+
+        //Assert
+        $component->assertDispatched('custom-event');
+    }
 }
