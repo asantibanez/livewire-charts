@@ -22,4 +22,23 @@ class LivewireTreeMapChartTest extends TestCase
         //Assert
         $this->assertNotNull($component);
     }
+
+    /** @test */
+    public function should_emit_event_if_present()
+    {
+        //Arrange
+        $component = $this->buildComponent();
+
+        $treeMapChartModel = $component->treeMapChartModel;
+
+        data_set($treeMapChartModel, 'onBlockClickEventName', 'custom-event');
+
+        $component->set('treeMapChartModel', $treeMapChartModel);
+
+        //Act
+        $component->runAction('onBlockClick', []);
+
+        //Assert
+        $component->assertDispatched('custom-event');
+    }
 }

@@ -54,7 +54,7 @@ const treeMapChart = () => {
 
                             const block = data[series[seriesIndex].name][dataPointIndex]
 
-                            component.emit(onBlockClickEventName, block)
+                            component.call('onBlockClick', block)
                         },
                     }
                 },
