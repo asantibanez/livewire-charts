@@ -19,21 +19,19 @@ You can install the package via composer:
 composer require asantibanez/livewire-charts
 ```
 
-Next, you must export the package public scripts. To do this run `php artisan vendor:publish` 
-and export `livewire-charts:public`. This command will export a `vendor/livewire-charts` folder under the 
-`public` directory of your app.  
+Next, you must export the package public scripts. To do this run 
 
 ```bash
-php artisan vendor:publish --tag=livewire-charts:public
-```
+php artisan livewire-charts:install
+```         
 
-> Note: This last step can also be done using `livewire-charts:install` command in the artisan console.
+This command will export a `vendor/livewire-charts` folder under the `public` directory of your app which is used 
+by the `@livewireChartsScripts` directive. More on this topic later.
 
 ## Requirements
 
 This package requires the following packages/libraries to work:
-- `Laravel Livewire v2` (https://laravel-livewire.com/) 
-- `Alpine Js` (https://github.com/alpinejs/alpine)
+- `Laravel Livewire v3` (https://livewire.laravel.com/)
 - `Apex Charts` (https://apexcharts.com/)
 
 Please follow each package/library instructions on how to set them properly in your project.
@@ -75,9 +73,11 @@ With `$columnChartModel` at hand, we pass it to our `LivewireColumnChart` compon
 
 ```blade
 <livewire:livewire-column-chart
+    {{-- key="{{ $columnChartModel->reactiveKey() }}" --}}
     :column-chart-model="$columnChartModel"
 />
 ``` 
+>Note: Optionally add "key" to enable props reactivity if needed 💪
 
 Next, include the `@livewireChartsScripts` directive next to your other app scripts
 
@@ -126,10 +126,12 @@ $columnChartModel =
  We can listen to the `onClickEvent` registering a listener in any other Livewire component.
  
  ```php
- protected $listeners = [
-     'onColumnClick' => 'handleOnColumnClick',
- ];
- ``` 
+#[On('onColumnClick')]
+public function handleOnColumnClick($event)
+{
+    // Handle event
+} 
+``` 
 
 ## "Reactive" Charts
 
@@ -196,17 +198,18 @@ for each type of chart.
 
 ### LivewireColumnChart
 
-| Method | Description |
-|--------|-------------|
-| setOpacity(int $opacity) | Sets columns' opacity |
-| setColumnWidth(int $columnWidth) | Sets columns' width |
-| setHorizontal(boolean $value) | Sets columns or bars |
-| multiColumn() | Sets chart to display multiple column series |
-| singleColumn() | Sets chart to display a single column series |
-| stacked() | Sets chart to display column series stacked |
-| addColumn(string $title, double $value, string $color, array $extras = []) | Adds a column to the chart with the specified color. `$extras` is forwarded on click event |
-| addSeriesColumn(string $seriesName, string $title, double $value, array $extras = []) | Adds a column to a multicolumn chart. `$extras` is forwarded on click event |
-| onColumnClickEventName(string $eventName) | Event Name that will be fired when a column of the chart is clicked |
+| Method                                                                                | Description                                                                                |
+|---------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
+| setOpacity(int $opacity)                                                              | Sets columns' opacity                                                                      |
+| setColumnWidth(int $columnWidth)                                                      | Sets columns' width                                                                        |
+| setHorizontal()                                                                       | Displays columns horizontally                                                              |
+| setVertical()                                                                         | Displays columns vertically                                                                |
+| multiColumn()                                                                         | Sets chart to display multiple column series                                               |
+| singleColumn()                                                                        | Sets chart to display a single column series                                               |
+| stacked()                                                                             | Sets chart to display column series stacked                                                |
+| addColumn(string $title, double $value, string $color, array $extras = [])            | Adds a column to the chart with the specified color. `$extras` is forwarded on click event |
+| addSeriesColumn(string $seriesName, string $title, double $value, array $extras = []) | Adds a column to a multicolumn chart. `$extras` is forwarded on click event                |
+| onColumnClickEventName(string $eventName)                                             | Event Name that will be fired when a column of the chart is clicked                        |
 
 ### LivewirePieChart
 
