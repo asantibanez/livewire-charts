@@ -65,9 +65,16 @@ class ColumnChartModel extends BaseChartModel
         return $this;
     }
 
-    public function setHorizontal($value)
+    public function setHorizontal()
     {
-        $this->horizontal = $value;
+        $this->horizontal = true;
+
+        return $this;
+    }
+
+    public function setVertical()
+    {
+        $this->horizontal = false;
 
         return $this;
     }
