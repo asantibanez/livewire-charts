@@ -26,7 +26,7 @@ class LivewirePieChart extends Component
             return;
         }
 
-        $this->emit($onSliceClickEventName, $slice);
+        $this->dispatch($onSliceClickEventName, $slice);
     }
 
     public function render()
