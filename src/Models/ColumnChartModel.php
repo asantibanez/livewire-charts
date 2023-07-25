@@ -11,19 +11,19 @@ namespace Asantibanez\LivewireCharts\Models;
  */
 class ColumnChartModel extends BaseChartModel
 {
-    public $opacity;
+    private $opacity;
 
-    public $columnWidth;
+    private $columnWidth;
 
-    public $horizontal;
+    private $horizontal;
 
-    public $isMultiColumn;
+    private $isMultiColumn;
 
-    public $isStacked;
+    private $isStacked;
 
-    public $onColumnClickEventName;
+    private $onColumnClickEventName;
 
-    public $data;
+    private $data;
 
     public function __construct()
     {
