@@ -76,6 +76,8 @@ const pieChart = () => {
 
                 legend: component.get('pieChartModel.legend') || {},
 
+                theme: component.get('pieChartModel.theme') || {},
+
                 tooltip: {
                     y: {
                         formatter: function(value, series) {

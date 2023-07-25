@@ -83,6 +83,9 @@ const areaChart = () => {
                         bottom: 0,
                     }
                 },
+
+                theme: component.get('areaChartModel.theme') || {},
+
             };
 
             this.chart = new ApexCharts(this.$refs.container, options);

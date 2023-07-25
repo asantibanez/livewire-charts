@@ -61,6 +61,8 @@ const lineChart = () => {
 
                 stroke: component.get('lineChartModel.stroke') || {},
 
+                theme: component.get('lineChartModel.theme') || {},
+
                 title: {
                     text: title,
                     align: 'center'
