@@ -53,8 +53,8 @@ class BaseChartModel
             $this->sparklineToArray(),
             $this->gridToArray(),
             $this->colorsToArray(),
-            $this->themeToArray()
-            $this->jsonConfigToArray()
+            $this->themeToArray(),
+            $this->jsonConfigToArray(),
         );
     }
 
