@@ -209,7 +209,7 @@ for each type of chart.
 | stacked()                                                                             | Sets chart to display column series stacked                                                |
 | addColumn(string $title, double $value, string $color, array $extras = [])            | Adds a column to the chart with the specified color. `$extras` is forwarded on click event |
 | addSeriesColumn(string $seriesName, string $title, double $value, array $extras = []) | Adds a column to a multicolumn chart. `$extras` is forwarded on click event                |
-| onColumnClickEventName(string $eventName)                                             | Event Name that will be fired when a column of the chart is clicked                        |
+| withOnColumnClickEventName(string $eventName)                                         | Event Name that will be fired when a column of the chart is clicked                        |
 
 ### LivewirePieChart
 
