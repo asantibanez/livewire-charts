@@ -9,13 +9,13 @@ namespace Asantibanez\LivewireCharts\Models;
  */
 class PieChartModel extends BaseChartModel
 {
-    public $onSliceClickEventName;
+    private $onSliceClickEventName;
 
-    public $opacity;
+    private $opacity;
 
-    public $type;
+    private $type;
 
-    public $data;
+    private $data;
 
     public function __construct()
     {
