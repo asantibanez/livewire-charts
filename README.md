@@ -210,11 +210,13 @@ for each type of chart.
 
 ### LivewirePieChart
 
-| Method | Description |
-|--------|-------------|
-| setOpacity(int $opacity) | Sets slices' opacity |
+| Method                                                                    | Description                                                                               |
+|---------------------------------------------------------------------------|-------------------------------------------------------------------------------------------|
+| setOpacity(int $opacity)                                                  | Sets slices' opacity                                                                      |
+| asPie()                                                                   | Displays chart as pie                                                                     |
+| asDonut()                                                                 | Displays chart as donut                                                                   |
 | addSlice(string $title, double $value, string $color, array $extras = []) | Adds a slice to the chart with the specified color. `$extras` is forwarded on click event |
-| withOnSliceClickEvent(string $eventName) | Event Name that will be fired when a column of the chart is clicked |
+| withOnSliceClickEvent(string $eventName)                                  | Event Name that will be fired when a column of the chart is clicked                       |
 
 ### LivewireAreaChart
 

@@ -44,6 +44,16 @@ class PieChartModel extends BaseChartModel
         return $this;
     }
 
+    public function asPie()
+    {
+        return $this->setType('pie');
+    }
+
+    public function asDonut()
+    {
+        return $this->setType('donut');
+    }
+
     public function withOnSliceClickEvent($onSliceClickEventName)
     {
         $this->onSliceClickEventName = $onSliceClickEventName;
