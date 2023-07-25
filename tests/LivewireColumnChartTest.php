@@ -3,12 +3,12 @@
 namespace Asantibanez\LivewireCharts\Tests;
 
 use Asantibanez\LivewireCharts\Charts\LivewireColumnChart;
+use Livewire\Features\SupportTesting\Testable;
 use Livewire\Livewire;
-use Livewire\Testing\TestableLivewire;
 
 class LivewireColumnChartTest extends TestCase
 {
-    private function buildComponent() : TestableLivewire
+    private function buildComponent() : Testable
     {
         return Livewire::test(LivewireColumnChart::class);
     }

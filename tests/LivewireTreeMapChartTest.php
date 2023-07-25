@@ -3,12 +3,12 @@
 namespace Asantibanez\LivewireCharts\Tests;
 
 use Asantibanez\LivewireCharts\Charts\LivewireTreeMapChart;
+use Livewire\Features\SupportTesting\Testable;
 use Livewire\Livewire;
-use Livewire\Testing\TestableLivewire;
 
 class LivewireTreeMapChartTest extends TestCase
 {
-    private function buildComponent() : TestableLivewire
+    private function buildComponent() : Testable
     {
         return Livewire::test(LivewireTreeMapChart::class);
     }

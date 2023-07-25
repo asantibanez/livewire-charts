@@ -3,12 +3,12 @@
 namespace Asantibanez\LivewireCharts\Tests;
 
 use Asantibanez\LivewireCharts\Charts\LivewireAreaChart;
+use Livewire\Features\SupportTesting\Testable;
 use Livewire\Livewire;
-use Livewire\Testing\TestableLivewire;
 
 class LivewireAreaChartTest extends TestCase
 {
-    private function buildComponent() : TestableLivewire
+    private function buildComponent() : Testable
     {
         return Livewire::test(LivewireAreaChart::class);
     }
