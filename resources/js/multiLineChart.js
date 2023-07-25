@@ -74,6 +74,8 @@ const multiLineChart = () => {
                 },
 
                 yaxis: component.get('lineChartModel.yAxis') || {},
+
+                theme: component.get('lineChartModel.theme') || {},
             };
 
             const colors = component.get('lineChartModel.colors');
