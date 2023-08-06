@@ -61,6 +61,8 @@ const lineChart = () => {
 
                 stroke: component.get('lineChartModel.stroke') || {},
 
+                theme: component.get('lineChartModel.theme') || {},
+
                 title: {
                     text: title,
                     align: 'center'
@@ -95,6 +97,14 @@ const lineChart = () => {
                             }
                         }
                     )
+                },
+
+                tooltip: {
+                    y: {
+                        formatter: function(value, series) {
+                            return data[series.dataPointIndex].extras.tooltip || value;
+                        }
+                    }
                 },
             };
 

@@ -3,12 +3,12 @@
 namespace Asantibanez\LivewireCharts\Tests;
 
 use Asantibanez\LivewireCharts\Charts\LivewireColumnChart;
+use Livewire\Features\SupportTesting\Testable;
 use Livewire\Livewire;
-use Livewire\Testing\TestableLivewire;
 
 class LivewireColumnChartTest extends TestCase
 {
-    private function buildComponent() : TestableLivewire
+    private function buildComponent() : Testable
     {
         return Livewire::test(LivewireColumnChart::class);
     }
@@ -21,5 +21,24 @@ class LivewireColumnChartTest extends TestCase
 
         //Assert
         $this->assertNotNull($component);
+    }
+
+    /** @test */
+    public function should_emit_event_if_present()
+    {
+        //Arrange
+        $component = $this->buildComponent();
+
+        $columnChartModel = $component->columnChartModel;
+
+        data_set($columnChartModel, 'onColumnClickEventName', 'custom-event');
+
+        $component->set('columnChartModel', $columnChartModel);
+
+        //Act
+        $component->runAction('onColumnClick', []);
+
+        //Assert
+        $component->assertDispatched('custom-event');
     }
 }

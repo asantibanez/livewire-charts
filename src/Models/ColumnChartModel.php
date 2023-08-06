@@ -11,19 +11,19 @@ namespace Asantibanez\LivewireCharts\Models;
  */
 class ColumnChartModel extends BaseChartModel
 {
-    public $opacity;
+    private $opacity;
 
-    public $columnWidth;
+    private $columnWidth;
 
-    public $horizontal;
+    private $horizontal;
 
-    public $isMultiColumn;
+    private $isMultiColumn;
 
-    public $isStacked;
+    private $isStacked;
 
-    public $onColumnClickEventName;
+    private $onColumnClickEventName;
 
-    public $data;
+    private $data;
 
     public function __construct()
     {
@@ -65,9 +65,16 @@ class ColumnChartModel extends BaseChartModel
         return $this;
     }
 
-    public function setHorizontal($value)
+    public function setHorizontal()
     {
-        $this->horizontal = $value;
+        $this->horizontal = true;
+
+        return $this;
+    }
+
+    public function setVertical()
+    {
+        $this->horizontal = false;
 
         return $this;
     }

@@ -14,6 +14,7 @@ const multiColumnChart = () => {
                 this.chart.destroy()
             }
 
+            const title = component.get('columnChartModel.title')
             const stacked = component.get('columnChartModel.isStacked');
             const animated = component.get('columnChartModel.animated');
             const onColumnClickEventName = component.get('columnChartModel.onColumnClickEventName')
@@ -81,13 +82,16 @@ const multiColumnChart = () => {
 
                 yaxis: {
                     title: {
-                        text: component.get('columnChartModel.title'),
+                        text: title,
                     }
                 },
 
                 fill: {
                     opacity: component.get('columnChartModel.opacity'),
                 },
+
+                theme: component.get('columnChartModel.theme') || {},
+
             };
 
             const colors = component.get('columnChartModel.colors');

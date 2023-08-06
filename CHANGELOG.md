@@ -1,5 +1,16 @@
 # Changelog
 
+## 3.0.0 - 2023-07-25
+- Added Livewire v3 support
+- Added ability to set chart theme (thanks to @syntaxlexx)
+- Added ability to configure chart via JSON properties
+
+## 2.5.0 - 2023-02-01
+- Added tooltip override via `extras.tooltip`
+
+## 2.4.2 - 2023-02-01
+- Fixed hover title on column chart
+
 ## 2.4.1 - 2022-02-18
 - Fixed xAxis auto-categories for MultiColumnChart 
 

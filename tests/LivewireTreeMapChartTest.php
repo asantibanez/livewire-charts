@@ -3,12 +3,12 @@
 namespace Asantibanez\LivewireCharts\Tests;
 
 use Asantibanez\LivewireCharts\Charts\LivewireTreeMapChart;
+use Livewire\Features\SupportTesting\Testable;
 use Livewire\Livewire;
-use Livewire\Testing\TestableLivewire;
 
 class LivewireTreeMapChartTest extends TestCase
 {
-    private function buildComponent() : TestableLivewire
+    private function buildComponent() : Testable
     {
         return Livewire::test(LivewireTreeMapChart::class);
     }
@@ -21,5 +21,24 @@ class LivewireTreeMapChartTest extends TestCase
 
         //Assert
         $this->assertNotNull($component);
+    }
+
+    /** @test */
+    public function should_emit_event_if_present()
+    {
+        //Arrange
+        $component = $this->buildComponent();
+
+        $treeMapChartModel = $component->treeMapChartModel;
+
+        data_set($treeMapChartModel, 'onBlockClickEventName', 'custom-event');
+
+        $component->set('treeMapChartModel', $treeMapChartModel);
+
+        //Act
+        $component->runAction('onBlockClick', []);
+
+        //Assert
+        $component->assertDispatched('custom-event');
     }
 }

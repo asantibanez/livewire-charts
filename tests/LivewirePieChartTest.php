@@ -3,12 +3,12 @@
 namespace Asantibanez\LivewireCharts\Tests;
 
 use Asantibanez\LivewireCharts\Charts\LivewirePieChart;
+use Livewire\Features\SupportTesting\Testable;
 use Livewire\Livewire;
-use Livewire\Testing\TestableLivewire;
 
 class LivewirePieChartTest extends TestCase
 {
-    private function buildComponent() : TestableLivewire
+    private function buildComponent() : Testable
     {
         return Livewire::test(LivewirePieChart::class);
     }
@@ -21,5 +21,24 @@ class LivewirePieChartTest extends TestCase
 
         //Assert
         $this->assertNotNull($component);
+    }
+
+    /** @test */
+    public function should_emit_event_if_present()
+    {
+        //Arrange
+        $component = $this->buildComponent();
+
+        $pieChartModel = $component->pieChartModel;
+
+        data_set($pieChartModel, 'onSliceClickEventName', 'custom-event');
+
+        $component->set('pieChartModel', $pieChartModel);
+
+        //Act
+        $component->runAction('onSliceClick', []);
+
+        //Assert
+        $component->assertDispatched('custom-event');
     }
 }
