@@ -170,20 +170,21 @@ for each type of chart.
 
 ### All
 
-| Method | Description |
-|--------|-------------|
-| setTitle(string $title) | Sets chart title |
-| setAnimated(boolean $animated) | Enables/disables animation |
-| setDataLabelsEnabled(boolean $enabled) | Enables/disables data labels |
-| withDataLabels() | Enables data labels |
-| withoutDataLabels() | Disables data labels |
-| withLegend() | Shows legends |
-| withoutLegend() | Hides legends |
-| setColors(array $colors) | Set colors for chart |
-| addColors(string $color) | Append $color to $colors set |
-| setXAxisCategories(array $categories) | Enables custom categories for chart X Axis |
-| sparklined() | Enables Apex Charts sparkline feature |
-| setSparklineEnabled(boolean $isEnabled) | Enables/Disables Apex Charts sparkline feature |
+| Method                                  | Description                                                                                                                            |
+|-----------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| setTitle(string $title)                 | Sets chart title                                                                                                                       |
+| setAnimated(boolean $animated)          | Enables/disables animation                                                                                                             |
+| setDataLabelsEnabled(boolean $enabled)  | Enables/disables data labels                                                                                                           |
+| withDataLabels()                        | Enables data labels                                                                                                                    |
+| withoutDataLabels()                     | Disables data labels                                                                                                                   |
+| withLegend()                            | Shows legends                                                                                                                          |
+| withoutLegend()                         | Hides legends                                                                                                                          |
+| setColors(array $colors)                | Set colors for chart                                                                                                                   |
+| addColors(string $color)                | Append $color to $colors set                                                                                                           |
+| setXAxisCategories(array $categories)   | Enables custom categories for chart X Axis                                                                                             |
+| sparklined()                            | Enables Apex Charts sparkline feature                                                                                                  |
+| setSparklineEnabled(boolean $isEnabled) | Enables/Disables Apex Charts sparkline feature                                                                                         |
+| setJsonConfig(array $config)            | Adds extra customization to charts by passing Apex charts properties keys and values. Nested keys must be added using dot (.) notation |
 
 ### LivewireLineChart
 
@@ -255,6 +256,31 @@ with `php artisan vendor:publish` and selecting `livewire-charts:scripts`. This 
 inside your resources folder. You can then adjust imports as you see fit in your project.
 
 >Note: You must remove @livewireChartsScripts directive so it doesn't clash with the scripts in your build system. 
+
+
+## Advanced Usage - Custom Json Configs
+
+The `setJsonConfig()` method on every chart allows adding custom Apex properties not provided first hand by the package. 
+This means that any chart property supported by Apex chart can be passed down using this method.
+
+```php
+$chart->setJsonConfig([
+    'plotOptions.pie.startAngle' => -90,
+    'plotOptions.pie.endAngle' => 90,
+    'plotOptions.pie.offsetY' => 10,
+    'grid.padding.bottom' => -180,
+]);
+```
+
+>Note: If you want to add nested properties, you can use dot (.) notation for this matter.
+ 
+You can even pass down simple JS functions. For example, for formatting you can pass down your own closure
+
+```php
+$chart->setJsonConfig([
+    'tooltip.y.formatter' => '(val) => `$${val} million dollars baby!`'
+])
+```
 
 ## Troubleshooting
 
