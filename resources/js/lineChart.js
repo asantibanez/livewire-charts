@@ -1,3 +1,4 @@
+import { mergedOptionsWithJsonConfig } from './helpers'
 
 const lineChart = () => {
     return {
@@ -20,6 +21,7 @@ const lineChart = () => {
             const data = component.get('lineChartModel.data');
             const onPointClickEventName = component.get('lineChartModel.onPointClickEventName');
             const sparkline = component.get('lineChartModel.sparkline');
+            const jsonConfig = component.get('lineChartModel.jsonConfig');
 
             const series = [{
                 name: title,
@@ -108,7 +110,7 @@ const lineChart = () => {
                 },
             };
 
-            this.chart = new ApexCharts(this.$refs.container, options);
+            this.chart = new ApexCharts(this.$refs.container, mergedOptionsWithJsonConfig(options, jsonConfig));
             this.chart.render();
         }
     }

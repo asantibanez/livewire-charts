@@ -1,3 +1,4 @@
+import { mergedOptionsWithJsonConfig } from './helpers'
 
 const radarChart = () => {
     return {
@@ -21,6 +22,7 @@ const radarChart = () => {
             const data = component.get('radarChartModel.data');
             const sparkline = component.get('radarChartModel.sparkline');
             const colors = component.get('radarChartModel.colors');
+            const jsonConfig = component.get('radarChartModel.jsonConfig');
 
             const series = Object.keys(data)
                 .map(seriesName => ({
@@ -88,7 +90,7 @@ const radarChart = () => {
 
             };
 
-            this.chart = new ApexCharts(this.$refs.container, options);
+            this.chart = new ApexCharts(this.$refs.container, mergedOptionsWithJsonConfig(options, jsonConfig));
             this.chart.render();
         }
     }
