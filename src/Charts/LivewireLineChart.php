@@ -26,7 +26,7 @@ class LivewireLineChart extends Component
             return;
         }
 
-        $this->emit($onPointClickEventName, $point);
+        $this->dispatch($onPointClickEventName, $point);
     }
 
     public function render()
