@@ -1,3 +1,4 @@
+import { mergedOptionsWithJsonConfig } from './helpers'
 
 const treeMapChart = () => {
     return {
@@ -21,6 +22,7 @@ const treeMapChart = () => {
             const data = component.get('treeMapChartModel.data');
             const colors = component.get('treeMapChartModel.colors');
             const enableShades = component.get('treeMapChartModel.enableShades');
+            const jsonConfig = component.get('treeMapChartModel.jsonConfig');
 
             const series = Object.keys(data)
                 .map(seriesName => ({
@@ -69,7 +71,7 @@ const treeMapChart = () => {
                 colors: colors,
             };
 
-            this.chart = new ApexCharts(this.$refs.container, options);
+            this.chart = new ApexCharts(this.$refs.container, mergedOptionsWithJsonConfig(options, jsonConfig));
             this.chart.render();
         }
     }

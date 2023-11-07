@@ -1,3 +1,4 @@
+import { mergedOptionsWithJsonConfig } from './helpers'
 
 const multiColumnChart = () => {
     return {
@@ -24,6 +25,7 @@ const multiColumnChart = () => {
             const grid = component.get('columnChartModel.grid');
             const columnWidth = component.get('columnChartModel.columnWidth');
             const horizontal = component.get('columnChartModel.horizontal');
+            const jsonConfig = component.get('columnChartModel.jsonConfig');
 
             const data = component.get('columnChartModel.data');
             const series = Object.keys(data)
@@ -100,7 +102,7 @@ const multiColumnChart = () => {
                 options['colors'] = colors
             }
 
-            this.chart = new ApexCharts(this.$refs.container, options);
+            this.chart = new ApexCharts(this.$refs.container, mergedOptionsWithJsonConfig(options, jsonConfig));
             this.chart.render();
         }
     }
