@@ -1,3 +1,4 @@
+import { mergedOptionsWithJsonConfig } from './helpers'
 
 const areaChart = () => {
     return {
@@ -20,6 +21,7 @@ const areaChart = () => {
             const onPointClickEventName = component.get('areaChartModel.onPointClickEventName')
             const data = component.get('areaChartModel.data');
             const sparkline = component.get('areaChartModel.sparkline');
+            const jsonConfig = component.get('areaChartModel.jsonConfig');
 
             const series = Object.keys(data).map(key => {
                 return {
@@ -94,7 +96,7 @@ const areaChart = () => {
 
             };
 
-            this.chart = new ApexCharts(this.$refs.container, options);
+            this.chart = new ApexCharts(this.$refs.container, mergedOptionsWithJsonConfig(options, jsonConfig));
             this.chart.render();
         }
     }
