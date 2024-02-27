@@ -17,12 +17,12 @@
     ],
     "require": {
         "php": "^7.2|^7.3|^7.4|^8.0",
-        "illuminate/support": "^7.0|^8.0|^9.0|^10.0",
+        "illuminate/support": "^7.0|^8.0|^9.0|^10.0|^11.0",
         "livewire/livewire": "^3.0"
     },
     "require-dev": {
-        "orchestra/testbench": "^5.0|^6.0|^7.0|^8.0",
-        "phpunit/phpunit": "^8.0|^9.5.10"
+        "orchestra/testbench": "^5.0|^6.0|^7.0|^8.0|^9.0",
+        "phpunit/phpunit": "^8.0|^9.5.10|^10.5"
     },
     "autoload": {
         "psr-4": {
