@@ -12,15 +12,15 @@ export const addPathToObjectWithValue = (obj, path, value) => {
 }
 
 export const mergedOptionsWithJsonConfig = (options, jsonConfig) => {
+    console.log('jsonConfig', jsonConfig);
+    console.log('options', options);
     const customOptions = Object.keys(jsonConfig)
         .reduce(function (obj, key) {
             const value = jsonConfig[key]
 
-            if (typeof value === 'string' && value.includes('function')) {
-                return addPathToObjectWithValue(obj, key, eval('(' + value + ')'))
-            }
-
-            return addPathToObjectWithValue(obj, key, eval(value))
+            // Assume `value` is now directly a function or other proper JS type
+            // No need for eval(), just directly use the value
+            return addPathToObjectWithValue(obj, key, value)
         }, {})
 
     return deepmerge(options, customOptions)
