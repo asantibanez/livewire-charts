@@ -1,5 +1,5 @@
 {
-    "name": "asantibanez/livewire-charts",
+    "name": "flakron/livewire-charts",
     "description": "Livewire Charts",
     "keywords": [
         "asantibanez",
@@ -17,7 +17,7 @@
     ],
     "require": {
         "php": "^7.2|^7.3|^7.4|^8.0",
-        "illuminate/support": "^7.0|^8.0|^9.0|^10.0",
+        "illuminate/support": "^7.0|^8.0|^9.0|^10.0|^11.0",
         "livewire/livewire": "^3.0"
     },
     "require-dev": {
