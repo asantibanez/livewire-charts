@@ -9,6 +9,7 @@ use Asantibanez\LivewireCharts\Models\ColumnChartModel;
 use Asantibanez\LivewireCharts\Models\LineChartModel;
 use Asantibanez\LivewireCharts\Models\PieChartModel;
 use Asantibanez\LivewireCharts\Models\RadarChartModel;
+use Asantibanez\LivewireCharts\Models\RadialChartModel;
 use Asantibanez\LivewireCharts\Models\TreeMapChartModel;
 
 class LivewireCharts
@@ -52,8 +53,13 @@ class LivewireCharts
         return new RadarChartModel();
     }
 
-    public function treeMapChartModel()
+    public function treeMapChartModel(): TreeMapChartModel
     {
         return new TreeMapChartModel();
+    }
+
+    public function radialChartModel(): RadialChartModel
+    {
+        return new RadialChartModel();
     }
 }

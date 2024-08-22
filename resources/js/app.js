@@ -1,12 +1,13 @@
 import ApexCharts from 'apexcharts'
 import areaChart from "./areaChart"
 import columnChart from "./columnChart"
-import multiColumnChart from "./multiColumnChart";
+import multiColumnChart from "./multiColumnChart"
 import lineChart from "./lineChart"
 import multiLineChart from "./multiLineChart"
 import pieChart from "./pieChart"
 import radarChart from "./radarChart"
 import treeMapChart from "./treeMapChart"
+import radialChart from "./radialChart"
 
 window.ApexCharts = ApexCharts
 window.livewireChartsAreaChart = areaChart
@@ -17,3 +18,4 @@ window.livewireChartsPieChart = pieChart
 window.livewireChartsMultiColumnChart = multiColumnChart
 window.livewireChartsRadarChart = radarChart
 window.livewireChartsTreeMapChart = treeMapChart
+window.livewireChartsRadialChart = radialChart

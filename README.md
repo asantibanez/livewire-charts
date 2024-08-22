@@ -47,6 +47,7 @@ Livewire Charts supports out of the box the following types of charts
 - Area Chart (`LivewireAreaChart` component)
 - Radar Chart (`LivewireRadarChart` component)
 - Tree Map Chart (`LivewireTreeMapChart` component)
+- Radial Chart (`LivewireRadialChart` component)
 
 Each one comes with its own "model" class that allows you to define the chart's data and render behavior. 
 - `LivewireLineChart` uses `LineChartModel` to set up data points, markers, events and other ui customizations. 
@@ -55,6 +56,7 @@ Each one comes with its own "model" class that allows you to define the chart's 
 - `LivewireAreaChart` uses `AreaChartModel` to set up data points, events and other ui customizations.
 - `LivewireRadarChart` uses `RadarChartModel` to set up data points, events and other ui customizations.
 - `LivewireTreeMapChart` uses `TreeMapChartModel` to set up data blocks, events and other ui customizations.
+- `LivewireRadialChart` uses `RadialChartModel` to set up data bars, events and other ui customizations.
 
 For example, to render a column chart, we can create an instance of `ColumnChartModel` and add some data to it
 ```php
@@ -106,6 +108,7 @@ LivewireCharts::pieChartModel();
 LivewireCharts::areaChartModel();
 LivewireCharts::radarChartModel();
 LivewireCharts::treeMapChartModel();
+LivewireCharts::radialChartModel();
 ```
 
 ## Enabling Interactions
@@ -247,6 +250,14 @@ for each type of chart.
 | withOnBlockClickEvent(string $eventName) | Event Name that will be fired when a block of the chart is clicked |
 | setDistributed(bool $distributed) | Set whether the chart uses distribution or not |
 
+### LivewireRadialChart
+
+| Method                                                                         | Description                                                      |
+|--------------------------------------------------------------------------------|------------------------------------------------------------------|
+| addBar(string $title, double $value, string $color = null, array $extras = []) | Adds a bar to the default series                                 |
+| withOnBarClickEvent(string $eventName)                                         | Event Name that will be fired when a bar of the chart is clicked |
+| showTotal()                                                                    | Show the total percetage to the graph                            |
+| hideTotal()                                                                    | Hides the total percetage to the graph                           |
 
 ## Advanced Usage - Integrating Scripts
 

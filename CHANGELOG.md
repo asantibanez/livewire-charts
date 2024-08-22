@@ -1,5 +1,15 @@
 # Changelog
 
+## 4.1.0 - 2024-08-22
+- Added Radial chart
+
+## 4.0.0 - 2024-08-22
+- Added Laravel 11 support
+
+## 3.1.0 - 2023-11-07
+- Added missing jsonConfig (thanks to @stijnvanouplines)
+- Changed 'emit' functions in Area,Line, and Radar chart to 'dispatch' (thanks to @redsquirrelstudio)
+
 ## 3.0.0 - 2023-07-25
 - Added Livewire v3 support
 - Added ability to set chart theme (thanks to @syntaxlexx)
