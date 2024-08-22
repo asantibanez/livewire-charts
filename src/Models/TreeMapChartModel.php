@@ -9,9 +9,6 @@ namespace Asantibanez\LivewireCharts\Models;
  */
 class TreeMapChartModel extends BaseChartModel
 {
-    use HasTitle;
-    use HasColors;
-
     public $data;
     public $distributed;
     public $onBlockClickEventName;
