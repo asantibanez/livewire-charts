@@ -15,7 +15,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'
+          php-version: '8.3'
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, gd, exif, imagick, bcmath
           coverage: none
 
@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install Composer dependencies
-        run: composer install --ignore-platform-reqs
+        run: composer install
 
       - name: Run tests
         run: ./vendor/bin/phpunit
