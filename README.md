@@ -82,7 +82,7 @@ With `$columnChartModel` at hand, we pass it to our `LivewireColumnChart` compon
 Next, include the `@livewireChartsScripts` directive next to your other app scripts
 
 ```html
-<livewire:scripts />
+@livewireScripts
 @livewireChartsScripts
 ```
 
