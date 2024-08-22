@@ -33,7 +33,7 @@ class TreeMapChartModel extends BaseChartModel
 
     public function addBlock($title, $value, $extras = [])
     {
-        return $this->addSeriesBlock($this->title, $title, $value, $extras);
+        return $this->addSeriesBlock($this->getTitle(), $title, $value, $extras);
     }
 
     public function addSeriesBlock($seriesName, $title, $value, $extras = [])

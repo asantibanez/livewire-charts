@@ -15,6 +15,11 @@ trait HasTitle
         return $this;
     }
 
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
     protected function initTitle()
     {
         $this->title = $this->defaultTitle();
