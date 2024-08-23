@@ -78,6 +78,15 @@ const multiLineChart = () => {
                 yaxis: component.get('lineChartModel.yAxis') || {},
 
                 theme: component.get('lineChartModel.theme') || {},
+                
+                tooltip: {
+                    y: {
+                        formatter: function(value, series) {
+                            let seriesName = Object.keys(data)[series.seriesIndex];
+                            return data[seriesName][series.dataPointIndex].extras.tooltip || value;
+                        }
+                    }
+                },
             };
 
             const colors = component.get('lineChartModel.colors');
