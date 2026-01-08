@@ -2,17 +2,18 @@
 
 namespace Asantibanez\LivewireCharts;
 
-use Asantibanez\LivewireCharts\Charts\LivewireAreaChart;
-use Asantibanez\LivewireCharts\Charts\LivewireColumnChart;
-use Asantibanez\LivewireCharts\Charts\LivewireLineChart;
-use Asantibanez\LivewireCharts\Charts\LivewirePieChart;
-use Asantibanez\LivewireCharts\Charts\LivewireRadarChart;
-use Asantibanez\LivewireCharts\Charts\LivewireRadialChart;
-use Asantibanez\LivewireCharts\Charts\LivewireTreeMapChart;
-use Asantibanez\LivewireCharts\Console\InstallCommand;
+use Livewire\Livewire;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use Livewire\Livewire;
+use Asantibanez\LivewireCharts\Console\InstallCommand;
+use Asantibanez\LivewireCharts\Charts\LivewirePieChart;
+use Asantibanez\LivewireCharts\Charts\LivewireAreaChart;
+use Asantibanez\LivewireCharts\Charts\LivewireLineChart;
+use Asantibanez\LivewireCharts\Charts\LivewireRadarChart;
+use Asantibanez\LivewireCharts\Charts\LivewireColumnChart;
+use Asantibanez\LivewireCharts\Charts\LivewireRadialChart;
+use Asantibanez\LivewireCharts\Charts\LivewireTreeMapChart;
+use Asantibanez\LivewireCharts\Charts\LivewireCombinationChart;
 
 class LivewireChartsServiceProvider extends ServiceProvider
 {
@@ -70,6 +71,7 @@ class LivewireChartsServiceProvider extends ServiceProvider
     {
         Livewire::component('livewire-line-chart', LivewireLineChart::class);
         Livewire::component('livewire-column-chart', LivewireColumnChart::class);
+        Livewire::component('livewire-combination-chart', LivewireCombinationChart::class);
         Livewire::component('livewire-pie-chart', LivewirePieChart::class);
         Livewire::component('livewire-area-chart', LivewireAreaChart::class);
         Livewire::component('livewire-radar-chart', LivewireRadarChart::class);

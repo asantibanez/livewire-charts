@@ -11,6 +11,7 @@ use Asantibanez\LivewireCharts\Models\PieChartModel;
 use Asantibanez\LivewireCharts\Models\RadarChartModel;
 use Asantibanez\LivewireCharts\Models\RadialChartModel;
 use Asantibanez\LivewireCharts\Models\TreeMapChartModel;
+use Asantibanez\LivewireCharts\Models\CombinationChartModel;
 
 class LivewireCharts
 {
@@ -36,6 +37,11 @@ class LivewireCharts
     {
         return (new ColumnChartModel)
             ->multiColumn();
+    }
+
+    public function combinationChartModel()
+    {
+        return (new CombinationChartModel);
     }
 
     public function areaChartModel()

@@ -50,6 +50,7 @@ Livewire Charts supports out of the box the following types of charts
 - Line/Multi Line Chart (`LivewireLineChart` component)
 - Pie Chart (`LivewirePieChart` component)
 - Column/Multi Line Chart (`LivewireColumnChart` component)
+- Combination chart for columns and lines (`LivewireCombinationChart` component)
 - Area Chart (`LivewireAreaChart` component)
 - Radar Chart (`LivewireRadarChart` component)
 - Tree Map Chart (`LivewireTreeMapChart` component)
@@ -59,6 +60,7 @@ Each one comes with its own "model" class that allows you to define the chart's 
 - `LivewireLineChart` uses `LineChartModel` to set up data points, markers, events and other ui customizations. 
 - `LivewirePieChart` uses `PieChartModel` to set up data slices, events and other ui customizations. 
 - `LivewireColumnChart` uses `ColumnChartModel` to set up data columns, events and other ui customizations.
+- `LivewireCombinationChart` uses `CombinationChartModel` to set up data points, data columns and other ui customizations.
 - `LivewireAreaChart` uses `AreaChartModel` to set up data points, events and other ui customizations.
 - `LivewireRadarChart` uses `RadarChartModel` to set up data points, events and other ui customizations.
 - `LivewireTreeMapChart` uses `TreeMapChartModel` to set up data blocks, events and other ui customizations.
@@ -110,6 +112,7 @@ LivewireCharts::lineChartModel();
 LivewireCharts::multiLineChartModel();
 LivewireCharts::columnChartModel();
 LivewireCharts::multiColumnChartModel();
+LivewireCharts::combinationChartModel();
 LivewireCharts::pieChartModel();
 LivewireCharts::areaChartModel();
 LivewireCharts::radarChartModel();
@@ -220,6 +223,14 @@ for each type of chart.
 | addColumn(string $title, double $value, string $color, array $extras = [])            | Adds a column to the chart with the specified color. `$extras` is forwarded on click event |
 | addSeriesColumn(string $seriesName, string $title, double $value, array $extras = []) | Adds a column to a multicolumn chart. `$extras` is forwarded on click event                |
 | withOnColumnClickEventName(string $eventName)                                         | Event Name that will be fired when a column of the chart is clicked                        |
+
+### LivewireCombinationChart
+
+| Method                                                                                | Description                                                                                |
+|---------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
+| setOpacity(int $opacity)                                                              | Sets columns' opacity                                                                      |
+| stacked()                                                                             | Sets chart to display column series stacked                                                |
+| addSeriesData($seriesName, $type, $title, $value)                                     | Adds a data to the chart. `$type` The type of the series (e.g. 'line' or 'column').        |
 
 ### LivewirePieChart
 
