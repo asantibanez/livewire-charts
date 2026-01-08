@@ -9,7 +9,7 @@ namespace Asantibanez\LivewireCharts\Models;
  */
 class AreaChartModel extends BaseChartModel
 {
-    public $color;
+    use HasStacked;
 
     public $data;
 
@@ -19,27 +19,30 @@ class AreaChartModel extends BaseChartModel
     {
         parent::__construct();
 
-        $this->color = '#90cdf4';
-
         $this->onPointClickEventName = null;
 
         $this->data = collect();
-    }
 
-    public function setColor($color)
-    {
-        $this->color = $color;
-
-        return $this;
+        $this->setColors(['#90cdf4']);
     }
 
     public function addPoint($title, $value, $extras = [])
     {
-        $this->data->push([
+        return $this->addSeriesPoint($this->getTitle(), $title, $value, $extras);
+    }
+
+    public function addSeriesPoint($seriesName, $title, $value, $extras = [])
+    {
+        $series = $this->data->get($seriesName, collect());
+
+        $series->push([
+            'seriesName' => $seriesName,
             'title' => $title,
             'value' => $value,
             'extras' => $extras,
         ]);
+
+        $this->data->put($seriesName, $series);
 
         return $this;
     }
@@ -53,18 +56,21 @@ class AreaChartModel extends BaseChartModel
 
     public function toArray()
     {
-        return array_merge(parent::toArray(), [
-            'color' => $this->color,
-            'onPointClickEventName' => $this->onPointClickEventName,
-            'data' => $this->data->toArray(),
-        ]);
+        return array_merge(
+            parent::toArray(),
+            $this->stackedToArray(),
+            [
+                'onPointClickEventName' => $this->onPointClickEventName,
+                'data' => $this->data->toArray(),
+            ],
+        );
     }
 
     public function fromArray($array)
     {
         parent::fromArray($array);
 
-        $this->color = data_get($array, 'color', '#90cdf4');
+        $this->stackedFromArray($array);
 
         $this->onPointClickEventName = data_get($array, 'onPointClickEventName', null);
 
