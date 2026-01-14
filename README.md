@@ -37,7 +37,7 @@ by the `@livewireChartsScripts` directive. More on this topic later.
 ## Requirements
 
 This package requires the following packages/libraries to work:
-- `Laravel Livewire v3` (https://livewire.laravel.com/)
+- `Laravel Livewire v3 or v4` (https://livewire.laravel.com/)
 - `Apex Charts` (https://apexcharts.com/)
 
 Please follow each package/library instructions on how to set them properly in your project.
