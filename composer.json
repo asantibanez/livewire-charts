@@ -17,12 +17,12 @@
     ],
     "require": {
         "php": "^7.2|^7.3|^7.4|^8.0|^8.2|^8.3",
-        "illuminate/support": "^7.0|^8.0|^9.0|^10.0|^11.0|^12.0",
-        "livewire/livewire": "^3.0"
+        "illuminate/support": "^7.0|^8.0|^9.0|^10.0|^11.0|^12.0|^13.0",
+        "livewire/livewire": "^3.0|dev-josh/v3-laravel-13-support"
     },
     "require-dev": {
-        "orchestra/testbench": "^5.0|^6.0|^7.0|^8.0|^9.0",
-        "phpunit/phpunit": "^8.0|^9.5.10|^10.5"
+        "orchestra/testbench": "^5.0|^6.0|^7.0|^8.0|^9.0|^11.0",
+        "phpunit/phpunit": "^8.0|^9.5.10|^10.5|^12.5.12"
     },
     "autoload": {
         "psr-4": {
