@@ -7,3 +7,4 @@ coverage
 .DS_STORE
 node_modules
 .phpunit.result.cache
+.phpunit.cache
