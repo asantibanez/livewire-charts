@@ -193,7 +193,7 @@ for each type of chart.
 | setXAxisCategories(array $categories)   | Enables custom categories for chart X Axis                                                                                             |
 | sparklined()                            | Enables Apex Charts sparkline feature                                                                                                  |
 | setSparklineEnabled(boolean $isEnabled) | Enables/Disables Apex Charts sparkline feature                                                                                         |
-| setJsonConfig(array $config)            | Adds extra customization to charts by passing Apex charts properties keys and values. Nested keys must be added using dot (.) notation |
+| setJsonConfig(array $config)            | Adds extra customization to charts by passing Apex Charts properties using dot (.) notation keys. Values may be scalars or a `Formatters::*` constant for callback-style options (e.g. `Formatters::CURRENCY`). Raw JS strings are no longer accepted. |
 
 ### LivewireLineChart
 
@@ -277,8 +277,8 @@ inside your resources folder. You can then adjust imports as you see fit in your
 
 ## Advanced Usage - Custom Json Configs
 
-The `setJsonConfig()` method on every chart allows adding custom Apex properties not provided first hand by the package. 
-This means that any chart property supported by Apex chart can be passed down using this method.
+The `setJsonConfig()` method on every chart allows adding custom Apex properties not provided first hand by the package.
+This means that any chart property supported by Apex Charts can be passed down using this method.
 
 ```php
 $chart->setJsonConfig([
@@ -289,14 +289,32 @@ $chart->setJsonConfig([
 ]);
 ```
 
->Note: If you want to add nested properties, you can use dot (.) notation for this matter.
- 
-You can even pass down simple JS functions. For example, for formatting you can pass down your own closure
+>Note: Nested properties use dot (.) notation.
+
+### Formatter callbacks
+
+For Apex options that require a JavaScript callback (e.g. `tooltip.y.formatter`), use a constant from
+`\Asantibanez\LivewireCharts\Formatters` instead of a raw JS string:
 
 ```php
+use Asantibanez\LivewireCharts\Formatters;
+
 $chart->setJsonConfig([
-    'tooltip.y.formatter' => '(val) => `$${val} million dollars baby!`'
-])
+    'tooltip.y.formatter' => Formatters::CURRENCY,
+]);
+```
+
+Available formatters:
+
+| Constant | Example output |
+|----------|----------------|
+| `Formatters::CURRENCY` | `$1,234.50` |
+| `Formatters::PERCENT`  | `42%` |
+| `Formatters::INTEGER`  | `43` |
+| `Formatters::DECIMAL`  | `3.14` |
+
+>**Breaking change (v5):** Raw JavaScript strings (e.g. `'(val) => ...'`) passed to `setJsonConfig()` are no longer
+>accepted and will throw an `InvalidArgumentException`. Replace them with one of the `Formatters::*` constants above.
 ```
 
 ## Troubleshooting

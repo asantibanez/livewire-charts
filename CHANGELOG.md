@@ -1,5 +1,17 @@
 # Changelog
 
+## 5.0.0 - 2026-09-02
+
+**Security / breaking change**
+
+- Removed `eval()`-based `jsonConfig` handling in `helpers.js` (Oneleet findings [JS] CWE-95).
+  `setJsonConfig()` no longer accepts raw JavaScript strings (e.g. arrow functions / `function` literals).
+  Pass a `Formatters::*` constant instead — see README "Advanced Usage - Custom Json Configs".
+- Added `\Asantibanez\LivewireCharts\Formatters` class with `CURRENCY`, `PERCENT`, `INTEGER`, `DECIMAL` constants.
+- `setJsonConfig()` now throws `InvalidArgumentException` on raw JS strings or unknown `formatter:` names.
+- Added `.npmrc` with `ignore-scripts=true` to prevent lifecycle-script execution on `npm install` / `npm ci`
+  (Oneleet finding [npm] supply-chain risk).
+
 ## 4.1.0 - 2024-08-22
 - Added Radial chart
 
